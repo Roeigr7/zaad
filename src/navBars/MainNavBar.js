@@ -29,19 +29,23 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
     openModal("RegisterModal");
   };
 
+  const toggle=()=>{
+    setMenuOpen(s => !s);
+    setHeight(height === 46 ? 'auto' : 46);
+  }
+ 
   return (
     
     <HeaderWrapper>
-       <AnimateHeight duration={800} height={height}>
-      <MobileMenuIcon onClick={() => {setMenuOpen(s => !s);setHeight(height === 46 ? 'auto' : 46)}}>
+       <AnimateHeight duration={700} height={height}>
+      <MobileMenuIcon onClick={toggle}>
         <M/>
       </MobileMenuIcon>
 
      
         <Menu open={menuOpen}>
-        <Ul>
+        <Ul onClick={()=>menuOpen ? toggle() : undefined}>
           <Li>
-
             <StyledLink logo to='/'>
               <Logo src={logo} />
             </StyledLink>

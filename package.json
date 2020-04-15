@@ -31,12 +31,12 @@
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js",
+    "analyze":"source-map-explorer 'build/static/js/*.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build"
+    "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": "react-app"

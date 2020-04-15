@@ -8,7 +8,7 @@ margin-left:${p=>p.right && 'auto'};
 @media(max-width: 768px){
 margin-left:0;
 flex: 0 0 100%;
-border-bottom:1px solid #366a82;
+border-bottom:0.5px solid #366a82;
 &:nth-of-type(1) {
     order: 1;
   }
@@ -54,14 +54,11 @@ background:#0f1f2f;/*background nav responsive*/
 `
 
 export const Menu = styled.nav`
-
 display:block;
 background:#0f1f2f;/*background nav*/
-&:hover{
-  transition:display 1s;
-}
+
 @media(max-width: 768px){
-    background:#336279;/*background menu responsive nav*/
+    background:#336279; /*background menu responsive nav*/
 }
 `
 
@@ -73,7 +70,6 @@ margin:0;
 @media(max-width: 768px){
     flex-direction: row;
     flex-wrap: wrap;
-
 }`
 
 export const Link = ({logo,isActive, children, ...props}) => {
@@ -96,11 +92,11 @@ display:${p=>p.logo? "none" : 'block'};
 }
 
 &:hover{
-  border-bottom:1px solid #c7cad1;
-    background-color: #c7cad1;
-    color:#0f1f2f;
+  background-color: #c7cad1;
+  color:#0f1f2f;
   transition:color 1s;
 }
+
 `
 
 
@@ -108,13 +104,16 @@ display:${p=>p.logo? "none" : 'block'};
 ///////////HAMBURGER ICONS/////////////////
 export const MobileMenuIcon = styled.div`
  @media(max-width: 768px){
-
  margin: auto 0 auto auto;
  width:60px;
- 
 padding:16px;
-    cursor:pointer;
+  &:hover{
+
+  transition:color 0s;
+  }
  }`
+
+
 export const M = styled.div`
  @media(max-width: 768px){
     margin:6px 15px 6px 40px;
@@ -123,27 +122,28 @@ export const M = styled.div`
     height:3px;
     width: 20px;
     border-radius:4px;
- 
+  &:active  {
+  background-color:#dfc887;
+  &:before{
+    background-color:#dfc887;
+  }
+  &:after{
+    background-color:#dfc887;
+  }
+  }
 &:before,&:after {
-
+  content:'';
+     display:block;
+     background: #e6e9f2;
+    height:3px;
+    width: 20px;
+    border-radius:4px;
  }
  &:before{
-    content:'';
-     display:block;
-     background: #e6e9f2;
-    height:3px;
-    width: 20px;
-    border-radius:4px;
-     transform:translateY(-6px);
-     
+
+     transform:translateY(-6px);   
  }
  &:after{
-    content:'';
-     display:block;
-     background: #e6e9f2;
-    height:3px;
-    width: 20px;
-    border-radius:4px;
      transform:translateY(3px);
  }
  }
