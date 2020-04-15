@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+# git commands
+
+git init-Create a new git repo
+git status-View the changes to your project code
+git add - add files to staging area
+git commit - Creates a new commit with files from staging area
+git log - View recent commits
