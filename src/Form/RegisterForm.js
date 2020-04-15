@@ -4,6 +4,8 @@ import TextInput from "./TextInput";
 import { combineValidators, isRequired } from "revalidate";
 import { connect } from "react-redux";
 import { startRegister} from "../Redux/actions/authActions";
+import { Form } from "../style/Form";
+import { Button } from "../style/style";
 
 
 const validate = combineValidators({
@@ -18,42 +20,42 @@ const RegisterForm = ({
 }) => {
   return (
     <Fragment>
-      <form style={{backgroundColor:'blue'}} onSubmit={handleSubmit(startRegister)}>
+      <Form onSubmit={handleSubmit(startRegister)}>
       <Field
           name='fullName'
           component={TextInput}
           type='text'
-          placeholder='Full Name'
+          ph='שם מלא'
         />
         <Field
           name='companyName'
           component={TextInput}
           type='text'
-          placeholder='Company Name'
+          ph='שם החברה'
         />
           <Field
           name='phone'
           component={TextInput}
           type='text'
-          placeholder='Phone'
+          ph='טלפון'
         />
         
         <Field
           name='email'
           component={TextInput}
           type='text'
-          placeholder='email'
+          ph='אימייל'
         />
         <Field
           name='password'
           component={TextInput}
           type='password'
-          placeholder='password'
+          ph='סיסמא'
         />
         {error && <label>{error}</label>}
 
-        <button type='submit'>submit</button>
-      </form>
+        <Button type='submit'>הירשם</Button>
+      </Form>
     </Fragment>
   );
 };

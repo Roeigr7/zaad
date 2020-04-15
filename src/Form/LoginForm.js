@@ -5,6 +5,7 @@ import { combineValidators, isRequired } from "revalidate";
 
 import { connect } from "react-redux";
 import { startEmailPasswordLogin } from "../Redux/actions/authActions";
+import { Button, Form } from "../style/style";
 
 const validate = combineValidators({
   email: isRequired({ message: "Insert email !" }),
@@ -17,7 +18,7 @@ const LoginForm = ({handleSubmit,startEmailPasswordLogin,error}) => {
     return (
 
     <Fragment>
-           <form style={{backgroundColor:'blue'}}
+           <Form
             onSubmit={handleSubmit(startEmailPasswordLogin)}> 
 
         <Field 
@@ -25,17 +26,19 @@ const LoginForm = ({handleSubmit,startEmailPasswordLogin,error}) => {
           component={TextInput}
           type='text'
           placeholder='email'
+          ph='אימייל'
         />
         <Field
           name='password'
           component={TextInput}
           type='password'
           placeholder='password'
+          ph='סיסמא'
         />
         {error&&<label>{error}</label>}
 
-        <button type='submit'>sjubmit</button>
-      </form>
+        <Button success  type='submit'>כנס</Button>
+      </Form>
     </Fragment>
   );
 };

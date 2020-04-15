@@ -25,7 +25,7 @@ const AccountDetails = ({user}) => {
       <D> {user&&user.phone}</D>
       <D grey>  {user&&user.email}</D> 
         {/* // <MDBListGroupItem>{user.password}</MDBListGroupItem> */}
-  <StyledLink to='/account/details/edit'>changeDetails</StyledLink>
+  <StyledLink to='/account/details/edit'>שנה פרטים</StyledLink>
   </>
     );
     };

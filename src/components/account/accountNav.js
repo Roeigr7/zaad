@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Butt,ButtonsContainer } from "../../style/style";
+import { Button,ButtonsContainer } from "../../style/style";
 
 
 
@@ -11,20 +11,20 @@ console.log('q',user)
   return (
     <ButtonsContainer>
   <Link to='/account/details'>
-    <Butt>details</Butt>
+    <Button>הפרטים שלי</Button>
   </Link>
   <Link to='/account/projects'>
-    <Butt>projects</Butt>
+    <Button>הפרויקטים שלי</Button>
   </Link>
 
   <Link to='/account/settings'>
-    <Butt>settings</Butt>
+    <Button>הגדרות</Button>
   </Link>
 
   
   {user&& (
   <Link to='/account/requests'>
-  <Butt>request</Butt>
+  <Button>בקשות מלקוחות</Button>
 </Link>
   )}
 </ButtonsContainer>

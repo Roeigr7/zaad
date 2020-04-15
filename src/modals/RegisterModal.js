@@ -5,11 +5,13 @@ import { closeModal } from "../Redux/actions/modalsActions";
 
 import RegisterForm from "../Form/RegisterForm";
 import { PageLayout, Button } from "../style/style";
+import { ModalContainer, ModalContent } from "./LoginModal";
 console.log("COMPONENT ->LoginModal");
 
 const RegisterModal = ({ closeModal }) => {
   return (
-    <PageLayout>
+    <ModalContainer>
+<ModalContent>
       <div toggle={() => closeModal()} isOpen={true} size='sm'>
         <div>regreg</div>
         <div>
@@ -17,12 +19,13 @@ const RegisterModal = ({ closeModal }) => {
         </div>
         <div>
           <Button onClick={() => closeModal()} color='secondary'>
-            Close
+           בטל
           </Button>
-          <Button color='primary'>Save changes</Button>
 
       </div></div>
-    </PageLayout>
+      </ModalContent>
+
+</ModalContainer>
   );
 };
 
