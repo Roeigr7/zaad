@@ -4,7 +4,7 @@ import PortfolioFilter from "../components/portfolio/portfolioFilter";
 import { connect } from "react-redux";
 import { getProjectsFilter} from "../Redux/actions/projectsActions";
 
-import { Button,PageLayout, ContainerUp, ContainerMid } from "../style/style";
+import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, Form, ContainerButton } from "../style/style";
 import Spinner from "../components/Spinner";
 
 class PortfolioPage extends Component {
@@ -72,7 +72,10 @@ state={
     if (this.state.loadingInitial) return <Spinner/>
     return (
       <PageLayout>
+  <Form>
+      <FormTitle>תיק עבודות</FormTitle></Form>
 <ContainerUp>
+
  <PortfolioFilter catFilter={this.catFilter} />
     </ContainerUp>
 <ContainerMid>
@@ -80,7 +83,7 @@ state={
 projects={this.state.loadedProjects} />
 
 </ContainerMid>
-<Button onClick={this.getNextProjects}>הצג עוד</Button>
+<Button showmore success onClick={this.getNextProjects}>הצג עוד</Button>
 </PageLayout>
     );
   }

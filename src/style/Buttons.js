@@ -10,13 +10,16 @@ background-size: 100% 200%;
   background-position: top;
   transition: background-position 0.3s ease-in-out;
 display:inline-block;
-margin:6px;
-border:1px solid #939097;
+margin:${p=>p.showmore? '0 auto':'5px'};
+border:1px solid #efefef;
 border-bottom:0.5px solid ${p=>p.success? '#01C34F': p.cancel? 'red': '#b3b6bc'};/*gold*/
 color:#eff1f4;
 font-size:16px;
-border-radius:1px;
+border-radius:3px;
 min-width:70px;
+height:30px;
+width:${p=>p.showmore ? '150px':''};
+
 
 &:hover{
   background-position: bottom;

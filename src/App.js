@@ -6,7 +6,7 @@ import PortfolioPage from "./Pages/PortfolioPage";
 import PageNotFound from "./notFoundPage";
 import ContactPage from "./Pages/ContactPage";
 import ProjectPage from "./Pages/ProjectPage";
-
+import ScrollToTop from 'react-router-scroll-top'
 import AboutPage from "./Pages/AboutPage";
 import AccountPage from "./Pages/AccountPage";
 import SendRequestPage from "./Pages/SendRequestPage";
@@ -46,7 +46,7 @@ const App=()=>{
         <ModalManager />
 
         <Router history={history}>
-
+        <ScrollToTop>
           <MainNavBar />
           <Switch>
           <Route exact path='/' component={StartPage} />
@@ -66,6 +66,7 @@ const App=()=>{
           </Switch>
           <IconsBar/>
           <BottomNavBar />
+          </ScrollToTop>
         </Router>
 </>
   );

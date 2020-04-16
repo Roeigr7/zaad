@@ -2,26 +2,16 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
+
 import Lcontact from "../utilities/Lcontact.png";
 import Lsend from "../utilities/Lsend.png";
 import Lhome from "../utilities/Lhome.png";
 import Labout from "../utilities/Labout.png";
 import Lportfolio from "../utilities/Lportfolio.png";
 
-export const SliderWrapper = styled.div`
-  width: 100%;
-`;
+import { SliderWrapper, IconBar, LinkIcon } from "../style/IconsBar";
 
-export const IconBar = styled.img`
-  padding: 0;
-  margin: 0;
-  max-width: 80px;
-`;
-export const IconsMenu = styled.div`
-  justify-content: space-evenly;
-  width: 100%;
-`;
+
 
 class IconsBar extends Component {
   render() {
@@ -33,6 +23,7 @@ class IconsBar extends Component {
         {
           breakpoint: 728,
           settings: {
+     
             slidesToShow: 3,
             arrows: false,
           },
@@ -43,11 +34,11 @@ class IconsBar extends Component {
       <SliderWrapper>
         <Slider {...settings}>
           {" "}
-          <IconBar src={Lsend} alt='send' />  
-          <IconBar src={Lportfolio} alt='portfolio' />
-          <IconBar src={Lhome} alt='home' />
-          <IconBar src={Lcontact} alt='contact' />
-          <IconBar src={Labout} alt='about' />
+          <LinkIcon to="/sendrequest"><IconBar  src={Lsend} alt='send' />  </LinkIcon>
+          <LinkIcon to="/portfolio"><IconBar src={Lportfolio} alt='portfolio' /></LinkIcon>
+          <LinkIcon to="/home"> <IconBar src={Lhome} alt='home' /></LinkIcon>
+          <LinkIcon to="/contact"> <IconBar src={Lcontact} alt='contact' /></LinkIcon>
+          <LinkIcon to="/about">  <IconBar src={Labout} alt='about'/></LinkIcon>
         </Slider>
       </SliderWrapper>
     );
