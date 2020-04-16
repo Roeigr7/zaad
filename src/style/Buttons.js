@@ -16,6 +16,7 @@ border-bottom:0.5px solid ${p=>p.success? '#01C34F': p.cancel? 'red': '#b3b6bc'}
 color:#eff1f4;
 font-size:16px;
 border-radius:1px;
+min-width:70px;
 
 &:hover{
   background-position: bottom;
@@ -64,6 +65,7 @@ export const Buttonmmm = styled.button`
   border: 1px solid #4e6096;
   cursor: pointer;
   color: #ffffff;
+
   font-family: Arial;
   font-size: 13px;
   font-weight: bold;

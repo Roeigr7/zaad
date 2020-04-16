@@ -32,6 +32,7 @@ export const ContainerBot = styled(ContainerMid)`
 export const Footer = styled.footer`
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
   height: 55px;
   justify-content: center;
   width: 100%;
@@ -63,11 +64,10 @@ export const Square = styled.div`
 `;
 //////////Container ABOUT//////////
 export const ContainerAbout = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+margin:0 auto;
+width:50%;
+
   @media (max-width: 768px) {
-    width: 98%;
+    width: 95%;
   }
 `;

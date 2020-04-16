@@ -4,8 +4,9 @@ import TextInput from "./TextInput";
 import { combineValidators, isRequired } from "revalidate";
 import { connect } from "react-redux";
 import { startRegister} from "../Redux/actions/authActions";
-import { Form } from "../style/Form";
-import { Button } from "../style/style";
+import { Form, ModalIcon, FormTitle } from "../style/Form";
+import { Button, FormButtons } from "../style/style";
+import Spinner from "../components/Spinner";
 
 
 const validate = combineValidators({
@@ -16,11 +17,18 @@ const validate = combineValidators({
 const RegisterForm = ({
   handleSubmit,
   startRegister,
+  closeModal,
+  loading,
+  reset,
   error
 }) => {
   return (
     <Fragment>
       <Form onSubmit={handleSubmit(startRegister)}>
+      {loading? (<Spinner/>):(
+          <>
+      <ModalIcon onClick={() =>(closeModal())}><i class="fas fa-times"></i></ModalIcon>
+  <FormTitle>הרשמה</FormTitle>
       <Field
           name='fullName'
           component={TextInput}
@@ -54,17 +62,26 @@ const RegisterForm = ({
         />
         {error && <label>{error}</label>}
 
-        <Button type='submit'>הירשם</Button>
+        <FormButtons>
+    <Button cancel onClick={() =>(closeModal())}>בטל</Button>
+        <Button  onClick={reset}>נקה הכל</Button>
+        <Button success type='submit'>כנס</Button> 
+        </FormButtons>
+        </>
+        )}
       </Form>
     </Fragment>
   );
 };
+const mapStateToProps=(state)=>({
+  loading: state.async.loading
+ })
 
 const actions = dispatch => ({
   startRegister: user => dispatch(startRegister(user)),
 
 });
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(reduxForm({ form: "RegisterForm", validate })(RegisterForm));

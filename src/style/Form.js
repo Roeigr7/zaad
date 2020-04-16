@@ -5,34 +5,59 @@ import ReactDatePicker from "react-datepicker";
 
 ///////Form title///
 export const FormTitle=styled.h2`
-background:#e8d08f;
-color: #0F1F2F;
+background: linear-gradient(180deg, rgba(250,250,250,1) 41%, rgba(238,238,238,1) 51%);
+color:#183042;
 font-weight:bold;
 text-align:center;
 padding:0;
 margin:0;
-border-radius:6px;
+
 
 `
 ///Form Container///
 export const Form=styled.form`
-
-margin: 10px auto;
+background: linear-gradient(-120deg, rgba(59,113,137,1) 50%, rgba(59,113,137,0.98) 50%);
+position:relative;
+margin:${p=>p.modal? '100px auto':'10px auto'};
 display:flex;
 padding:1px;
-width:50%;
+border:none;
+width:${p=>p.modal? '30%':'50%'};
 justify-content:center;
 flex-direction:column;
-background:none;
-box-sizing:border-box;
-box-shadow: 0px 0px 0px 9px rgba(15,31,47,1);
-border-radius:6px;
-
 @media(max-width: 768px){
-width:95%;
+width:90%;
+}
+&::before{
+content:'';
+position:absolute;
+top:-3px;
+left:-3px;
+right:-3px;
+bottom:-3px;
+z-index:-2;
+background: #fff;
+}
+
+&::after{
+content:'';
+position:absolute;
+top:-3px;
+left:-3px;
+right:-3px;
+bottom:-3px;
+z-index:-3;
+background: #fff;
+filter:${p=>p.modal? 'blur(3px)':'blur(1px)'};
+
+}
+
+&::before,&::after {
+background: linear-gradient(235deg,#f9f9f9,#f7f7f7,#f9f9f9);
+transform: skew(1deg,1deg);
+border-radius:4px;
 }
 `
-
 ////////-LABEL-///////////////
 export const InputContainer = styled.div`
 position:relative;
@@ -46,8 +71,9 @@ position:absolute;
 top:0;
 right:0;
 padding:10px 0;
+
 font-size:16px;
-color:#cfd1d6;
+color:#efefef;
 text-align:right;
 pointer-events: none;
 transition:0.5s;
@@ -57,7 +83,7 @@ export const Input = styled.input`
 width:100%;
 padding:8px 0;
 font-size:16px;
-color:#cfd1d6;
+color:#f4f4f4;
 
 border:none;
 border-bottom: 1px solid #e1e4ea;
@@ -73,7 +99,7 @@ text-align:right;
 }
 
 &:valid {
-    background-color: rgba(255,255,255,0.05);
+    background-color: #40748C;
 }
 
 &:valid  ~${Label} {
@@ -98,7 +124,7 @@ background-color:#c7cad1;
 width:100%;
 padding:8px 0;
 font-size:16px;
-color:#cfd1d6;
+color:#f4f4f4;
 
 border:none;
 
@@ -234,3 +260,12 @@ width:100%;
 `
 
 
+
+
+///////modalIcon///////////
+export const ModalIcon=styled.span`
+position:absolute;
+right:13px;
+top:9px;
+cursor:pointer;
+`

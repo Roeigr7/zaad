@@ -91,7 +91,7 @@ const {users,reset}= this.props;
           <FormButtons>
      
     
-      <Button cancel onClick={this.props.o}>בטל</Button>
+      <Button cancel onClick={this.props.cancel}>בטל</Button>
       <Button  onClick={reset}>נקה הכל</Button>
       <Button success type='submit'>הוסף פרויקט</Button>
       </FormButtons>

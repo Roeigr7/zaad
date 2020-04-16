@@ -39,6 +39,28 @@ border-bottom:0.5px solid #366a82;
 
 }`
 
+/////Logo navbar////////
+export const Logo =styled.img`
+position: relative;
+height:24px;
+padding-right:13px ;
+
+@media (max-width: 768px) {
+  display:none;
+
+}
+`
+export const LogoRes = styled.img`
+display:none;
+ @media(max-width: 768px){
+   position:fixed;
+   margin: 13px 0px 0px 11px;
+display:flex;
+flex-direction:left;
+    width: 40px;
+    border-radius:4px;
+ }
+`
 export const HeaderWrapper = styled.div`
  position:absolute;
  top:0px;
@@ -83,7 +105,7 @@ export const Link = ({logo,isActive, children, ...props}) => {
 export const StyledLink = styled(Link)`
 text-decoration:none;
 position:relative;
-color:#eaedf2;/*text*/
+color:${p=>p.send? '#dfc887':'#eaedf2'};/*text*/
 display: block;
 font-weight:${p=>p.isActive ? 'bold' :''};
 padding:13px;
@@ -107,14 +129,10 @@ export const MobileMenuIcon = styled.div`
  margin: auto 0 auto auto;
  width:60px;
 padding:16px;
-  &:hover{
-
-  transition:color 0s;
-  }
  }`
 
 
-export const M = styled.div`
+export const Hamburger = styled.div`
  @media(max-width: 768px){
     margin:6px 15px 6px 40px;
     display:block;

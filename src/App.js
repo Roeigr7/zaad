@@ -20,13 +20,14 @@ import { createGlobalStyle } from "styled-components";
 import MainNavBar from "./navBars/MainNavBar";
 import BottomNavBar from "./navBars/BottomNavBar";
 import StartPage from "./StartPage";
+import IconsBar from "./navBars/IconsBar";
 
 
 export const history = createBrowserHistory();
 
 const GlobalStyle = createGlobalStyle`
 	body{
-    background: linear-gradient(180deg, rgba(60,115,140,1) 0%, rgba(15,31,47,1) 84%);
+    background: linear-gradient(180deg, rgba(59, 113, 137,1) 0%, rgba(24, 48, 66,1) 85%);
     font-family: 'Heebo', sans-serif;
     background-repeat: no-repeat;
     background-size:cover;
@@ -63,6 +64,7 @@ const App=()=>{
             <PrivateRoute path='/account' component={AccountPage} />
             <Route component={PageNotFound} />
           </Switch>
+          <IconsBar/>
           <BottomNavBar />
         </Router>
 </>

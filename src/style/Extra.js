@@ -36,14 +36,3 @@ width: 50%;
 }
 `;
 
-/////Logo navbar////////
-export const Logo =styled.img`
-position: relative;
-height:24px;
-padding-right:13px ;
-
-@media (max-width: 768px) {
-  display:none;
-
-}
-`

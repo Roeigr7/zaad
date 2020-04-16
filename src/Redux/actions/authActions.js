@@ -2,23 +2,26 @@ import { firebase, firestore } from "../../firebase/firebase";
 import { SubmissionError,reset } from "redux-form";
 import { closeModal } from "./modalsActions";
 import {toastr} from 'react-redux-toastr'
+import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";
 
 
 export const login = uid => {
 return async (dispatch) => {
   try {
+  dispatch(asyncActionStart());
   let snap = await firestore.collection("users").doc(uid).get();
   let userAuth = {
     ...snap.data(),
     uid
   };
- console.log(userAuth,'32323232')
+  dispatch(asyncActionFinish());
  dispatch({
   type: "LOGIN",
   userAuth
 
  }) 
   }catch(error){
+    dispatch(asyncActionError());
 console.log('wwwwwwwwwlogin errrrrr',error)
   }
 }}
@@ -27,15 +30,19 @@ console.log('wwwwwwwwwlogin errrrrr',error)
 export const startEmailPasswordLogin = creds => {
   return async (dispatch) => {
     try {
+      dispatch(asyncActionStart());
       await firebase
         .auth()
         .signInWithEmailAndPassword(creds.email, creds.password);
+        dispatch(asyncActionFinish());
       dispatch(closeModal());
     
     } catch (error) {
+      dispatch(asyncActionError());
       throw new SubmissionError({
         _error: error.message
       });
+
     }
 
 
@@ -55,9 +62,9 @@ export const logout = () => {
 /////////////////REGISTER ACTION///////////////////
 export const startRegister = user => {
 
-  return async () => {
+  return async (dispatch) => {
     try {
-
+      dispatch(asyncActionStart());
       let createdUser = await firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password);
@@ -77,9 +84,10 @@ export const startRegister = user => {
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then(function() {
-          console.log("Dcessfully written!", user);
+          dispatch(asyncActionFinish());
         });
     } catch (error) {
+      dispatch(asyncActionError());
       console.log("lotob", error);
     }
   };
@@ -97,12 +105,14 @@ export const updatePassword=(creds)=>{
   return async (dispatch)=>{
     const user=firebase.auth().currentUser
     try{
- 
+      dispatch(asyncActionStart());
 await user.updatePassword(creds.passOne)//לוקח בדיוק את הוואליוז שבפורם
     await dispatch(reset('ChangePasswordForm'));
+    dispatch(asyncActionFinish());
     toastr.success('Success','your password been update')
-        console.log('nienbien')
+      
 }catch (error) {
+  dispatch(asyncActionError());
       throw new SubmissionError({
         _error: error.message
       });

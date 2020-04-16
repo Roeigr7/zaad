@@ -54,7 +54,7 @@ export const P=styled.p`
 word-wrap: break-word;
 font-size:${p=>p.date? '14px':'16px'};
 text-align:${p=>p.date? 'left' : 'center'};
-color:${p=>p.white? '#e2e2e2':'#C7CAD1'};
+color:${p=>p.white? '#e2e2e2':'#FAFAFA'};
 margin-bottom:${p=>p.date? '-10px' : ''};
 
 `

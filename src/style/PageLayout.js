@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Content = styled.main`
 position:relative;
-min-height:100vh;
 display:flex;
 flex-direction:column;
 

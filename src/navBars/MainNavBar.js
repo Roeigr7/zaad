@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AnimateHeight from 'react-animate-height';
 import { useLocation } from "react-router-dom";
 import logo from "../utilities/logo.png";
+import logoRes from "../utilities/logoRes.png";
 import { openModal } from "../Redux/actions/modalsActions";
 import { connect } from "react-redux";
 import MemberNav from "./MemberNav";
@@ -10,9 +11,9 @@ import GuestNav from "./GuestNav";
 import {
   HeaderWrapper,
   MobileMenuIcon,
-  Menu,M,
+  Menu,Hamburger,
   StyledLink,
-  Logo,
+  Logo,LogoRes,
   Ul,
   Li,
 } from "../style/style";
@@ -38,15 +39,17 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
     
     <HeaderWrapper>
        <AnimateHeight duration={700} height={height}>
+       <LogoRes src={logoRes} />
       <MobileMenuIcon onClick={toggle}>
-        <M/>
+        <Hamburger/>
+     
       </MobileMenuIcon>
 
      
         <Menu open={menuOpen}>
         <Ul onClick={()=>menuOpen ? toggle() : undefined}>
           <Li>
-            <StyledLink logo to='/'>
+            <StyledLink logo to='/home'>
               <Logo src={logo} />
             </StyledLink>
           </Li>
@@ -83,11 +86,11 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
           </Li>
           <Li>
 
-            <StyledLink
+            <StyledLink send 
               to='/sendrequest'
               isActive={pathname === "/sendrequest"}
             >
-              שלח בקשה
+              מסלול מהיר
             </StyledLink>
           </Li>
 

@@ -10,7 +10,7 @@ const AddProjectPage = props => (
   <PageLayout>
 
         <FormProject
-        o={()=>props.history.push("/home")}
+        cancel={()=>props.history.push("/home")}
           onSubmit={project => {
             props.dispatch(addNewProject(project));
             props.history.push("/portfolio");

@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { withFirestore } from "react-redux-firebase";
 import {
   Button,
-  Form,
+  Form,CON,
   FormTitle,
   FormButtons,
 } from "../style/style";
@@ -23,13 +23,15 @@ const validater = combineValidators({
   //   videoUrl:isRequired({message: 'Insert videoUrl !'}),
   // category:isRequired({message: 'Choose Category !'}),
 });
-const SendRequestPage = ({ handleSubmit, reset, addNewRequest }) => {
+const SendRequestPage = ({ history,handleSubmit, reset, addNewRequest }) => {
   const handleRequestSubmit = (values) => {
     addNewRequest(values);
+
   };
+  console.log('kkkkkkkkkkkk',history)
   return (
     <PageLayout>
-  
+
       <Form onSubmit={handleSubmit(handleRequestSubmit)}>
       <FormTitle>הגש בקשה</FormTitle>
         <Field
@@ -76,11 +78,12 @@ const SendRequestPage = ({ handleSubmit, reset, addNewRequest }) => {
           ph='?משהו נוסף'
         />
         <FormButtons>
-        <Button success type='submit'>שלח</Button>
+     <Button cancel onClick={()=>history.goBack()}>בטל</Button>
         <Button  onClick={reset}>נקה הכל</Button>
-        <Button cancel>בטל</Button>
+        <Button success type='submit'>שלח</Button>  
         </FormButtons>
       </Form>
+
     </PageLayout>
   );
 };

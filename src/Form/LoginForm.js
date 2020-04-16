@@ -5,7 +5,10 @@ import { combineValidators, isRequired } from "revalidate";
 
 import { connect } from "react-redux";
 import { startEmailPasswordLogin } from "../Redux/actions/authActions";
-import { Button, Form } from "../style/style";
+import { ModalIcon,Button, Form, FormTitle, FormButtons } from "../style/style";
+import Spinner from "../components/Spinner";
+
+
 
 const validate = combineValidators({
   email: isRequired({ message: "Insert email !" }),
@@ -13,13 +16,16 @@ const validate = combineValidators({
 });
 
 
-const LoginForm = ({handleSubmit,startEmailPasswordLogin,error}) => {
-
+const LoginForm = ({loading,closeModal,reset,handleSubmit,startEmailPasswordLogin,error}) => {
     return (
-
-    <Fragment>
-           <Form
+    
+ 
+           <Form modal
             onSubmit={handleSubmit(startEmailPasswordLogin)}> 
+        {loading? (<Spinner/>):(
+          <>
+  <ModalIcon onClick={() =>(closeModal())}><i class="fas fa-times"></i></ModalIcon>
+  <FormTitle>התחבר</FormTitle>
 
         <Field 
           name='email'
@@ -37,15 +43,24 @@ const LoginForm = ({handleSubmit,startEmailPasswordLogin,error}) => {
         />
         {error&&<label>{error}</label>}
 
-        <Button success  type='submit'>כנס</Button>
-      </Form>
-    </Fragment>
+        <FormButtons>
+    <Button cancel onClick={() =>(closeModal())}>בטל</Button>
+        <Button  onClick={reset}>נקה הכל</Button>
+        <Button success type='submit'>כנס</Button>   
+        </FormButtons>
+        </>
+        )}
+      </Form>   
+
   );
 };
 
+const mapStateToProps=(state)=>({
+  loading: state.async.loading
+ })
 const actions=dispatch=>({
 startEmailPasswordLogin: (creds)=>dispatch(startEmailPasswordLogin(creds))
 })
-export default connect(null,actions)
+export default connect(mapStateToProps,actions)
 (reduxForm({ form: "LoginForm", validate })(LoginForm));
 
