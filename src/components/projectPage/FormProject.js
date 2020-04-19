@@ -110,5 +110,5 @@ const actions={
 const mapStateToProps = state => ({
 users: state.user.allUsers
 })
-export default withFirestore(connect(mapStateToProps,actions)
-  (reduxForm({ form: "projectForm",validate,enableReinitialize:true })(FormProject)))
+export default connect(mapStateToProps,actions)
+  (reduxForm({ form: "projectForm",validate,enableReinitialize:true })(FormProject))

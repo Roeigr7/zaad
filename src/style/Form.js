@@ -22,7 +22,7 @@ margin:${p=>p.modal? '100px auto':'10px auto'};
 display:flex;
 padding:1px;
 border:none;
-width:${p=>p.modal? '30%':'50%'};
+width:${p=>p.small? '30%' : p.big? '70%' :'50%'};
 justify-content:center;
 flex-direction:column;
 @media(max-width: 768px){

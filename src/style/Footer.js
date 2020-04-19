@@ -1,38 +1,43 @@
-import {Link as RRD} from 'react-router-dom';
-import styled from 'styled-components';
-import React from 'react';
+import { Link as RRD } from "react-router-dom";
+import styled from "styled-components";
+import React from "react";
 
-export const Link = ({isActive,ig,fb,vim, children, ...props}) => {
-    return (
-        <RRD {...props}>
-            {children}
-        </RRD>
-    );
+export const Link = ({ isActive, ig, fb, vim, children, ...props }) => {
+  return <RRD {...props}>{children}</RRD>;
 };
 
+export const SocialLink = styled.a`
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: red;
+`;
 export const LinkFooter = styled(Link)`
-text-decoration:none;
-position:relative;
-color:#0a2749;/*text*/
-display: block;
-font-weight:${p=>p.isActive ? 'bold' :''};
-padding:${p=>p.ig||p.fb||p.vim ? '13px 7px 0px 7px' : '13px 10px 0px 10px'};
-&:after {
-    content: '';
+  text-decoration: none;
+  position: relative;
+  color: #0a2749; /*text*/
+  display: ${(p) => (p.contact ? "inline-block" : "block")};
+  font-weight: ${(p) => (p.isActive ? "bold" : "")};
+  padding: ${(p) =>
+    p.ig || p.fb || p.vim ? "13px 7px 0px 7px" : "13px 10px 0px 10px"};
+  &:after {
+    content: "";
     display: block;
-  width:0;
-  right: 0;
-  border-bottom: 1px solid #dfc887;
- position:absolute;
+    width: 0;
+    right: 0;
+    border-bottom: 1px solid #dfc887;
+    position: absolute;
     height: 2px;
     transition: 0.5s ease;
-}
-
-&:hover:after {
+ 
+  }
+  &:hover:after {
     width: 100%;
-}
-&:hover{
-color:${p=>p.ig? "#D72978" : p.fb? '#4064AD' : p.vim ? '#00B4D1' : '#dfc887'};
-}
+  }
+  &:hover {
+    color: ${(p) =>
+      p.ig ? "#D72978" : p.fb ? "#4064AD" : p.vim ? "#00B4D1" : "#dfc887"};
+  }
+`;
 
-` 
+export const LinkFooterIcon = LinkFooter.withComponent('a');

@@ -11,3 +11,4 @@ export * from './PageToTwo';
 export * from './Reviews';
 export * from './Spinner';
 export * from './Footer';
+export * from './Accordion';

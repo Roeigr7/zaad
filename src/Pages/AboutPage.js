@@ -4,9 +4,8 @@ import { PageLayout, H2, P, ContainerAbout, Form,FormTitle } from '../style/styl
 const aboutPage = () => {
     return (
 <PageLayout>
-  <Form>
-      <FormTitle>מי אנחנו אולפני צעד</FormTitle></Form>  
-<ContainerAbout>
+  <Form big>
+      <FormTitle>מי אנחנו אולפני צעד</FormTitle>
     <P>
 אולפני צעד הוקם בשנת 2019, עקב הרצון של יובל צעד ונועם אלישע לשלב כוחות וליצור עסק
 .שמשלב בין היכולות של יובל (הפקת וידאו) ונועם (עולם הסאונד)
@@ -20,7 +19,7 @@ const aboutPage = () => {
  כיום עם המון אהבה ותשוקה למקצוע, אנו מלווים כל לקוח ולקוח בתהליך ההפקה
   !ומוודאים שכל לקוח יוצא עם חיוך ענק על הפנים
   </P>
- </ContainerAbout>
+  </Form>  
            </PageLayout>
     )
 }

@@ -1,16 +1,15 @@
 import React from "react";
 
-import { LinkFooter,Footer, LiB, Ul } from '../style/style';
+import { LinkFooterIcon,LinkFooter,Footer, LiB, Ul } from '../style/style';
 
 const BottomNavBar = () => {
   return (
   <Footer>
   <Ul>
-  <LiB><LinkFooter fb to='/'><i className="fab fa-facebook-f"></i></LinkFooter></LiB>
-<LiB><LinkFooter ig to='/'><i className="fab fa-instagram"></i></LinkFooter></LiB>
-<LiB><LinkFooter vim to='/'><i className="fab fa-vimeo-v"></i></LinkFooter></LiB>
-
-<LiB ><LinkFooter to='/'>הצעה מהירה</LinkFooter></LiB>
+  <LiB><LinkFooterIcon fb href="https://www.facebook.com/zaadstudios/"><i className="fab fa-facebook-f"></i></LinkFooterIcon></LiB>
+<LiB><LinkFooterIcon ig href="https://www.instagram.com/zaadstudios/"><i className="fab fa-instagram"></i></LinkFooterIcon></LiB>
+<LiB><LinkFooterIcon vim href="https://vimeo.com/zaad"><i className="fab fa-vimeo-v"></i></LinkFooterIcon></LiB>
+<LiB ><LinkFooter to='/send'>מסלול מהיר</LinkFooter></LiB>
 <LiB><LinkFooter to='/contact'>צור קשר</LinkFooter></LiB>
 
   </Ul>

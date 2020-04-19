@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyledLink } from "../../style/style";
+import { StyledLink, P, Form, FormTitle, Button, Link } from "../../style/style";
 import styled from "styled-components";
 
 
@@ -19,13 +19,20 @@ const AccountDetails = ({user}) => {
 
   return (
 <>
-    
-      <D>{user&&user.fullName}</D>
-      <D grey>{user&&user.companyName}</D>
-      <D> {user&&user.phone}</D>
-      <D grey>  {user&&user.email}</D> 
+    <Form>
+      <FormTitle>הפרטים שלי</FormTitle>
+      <P bigspace right>{user&&user.fullName} <b>:שם</b>
+      <br/>
+{user&&user.companyName} <b>:שם חברה</b>
+<br/>
+  {user&&user.phone} <b>:טלפון</b>
+  <br/>
+ {user&&user.email} <b>:אימייל</b>
+     </P>
+  <Link to='/account/details/edit'><Button>שנה פרטים</Button></Link>
+      </Form>
         {/* // <MDBListGroupItem>{user.password}</MDBListGroupItem> */}
-  <StyledLink to='/account/details/edit'>שנה פרטים</StyledLink>
+  
   </>
     );
     };

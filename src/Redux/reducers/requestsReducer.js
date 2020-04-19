@@ -6,7 +6,7 @@ const requestsReducer = (state = requestsReducerDefaultState, action) => {
 
       case "FETCH_REQUESTS":
         console.log('actionrequesess',action.requests)
-        return action.requests;
+        return [...action.requests];
 
         case "DELETE_REQUEST":
    return [

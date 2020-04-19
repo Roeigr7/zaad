@@ -94,7 +94,7 @@ margin:0;
     flex-wrap: wrap;
 }`
 
-export const Link = ({logo,isActive, children, ...props}) => {
+export const Link = ({send,logo,isActive, children, ...props}) => {
     return (
         <ReactRouterDomLink {...props}>
             {children}

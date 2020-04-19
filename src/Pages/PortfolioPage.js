@@ -4,7 +4,7 @@ import PortfolioFilter from "../components/portfolio/portfolioFilter";
 import { connect } from "react-redux";
 import { getProjectsFilter} from "../Redux/actions/projectsActions";
 
-import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, Form, ContainerButton } from "../style/style";
+import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, Form } from "../style/style";
 import Spinner from "../components/Spinner";
 
 class PortfolioPage extends Component {
@@ -15,9 +15,9 @@ state={
   category:null
 }
   async componentDidMount(){
-    console.log('3333333didmount')
+
     let next=await this.props.getProjectsFilter();
-    console.log('bbbbb',next)
+
 
     if(next&&next.docs&&next.docs.length>1){
       this.setState({
@@ -31,9 +31,9 @@ state={
 
     const {projects}=this.props
     let lastProject=projects&&projects[projects.length-1];
-    console.log(lastProject,'ccccc')
+
     let next=await this.props.getProjectsFilter(lastProject,this.state.category);
-    console.log('nextttt',next.docs.length)
+
     if(next&&next.docs&&next.docs.length<=7){
       this.setState({
         moreProjects:false

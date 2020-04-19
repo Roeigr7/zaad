@@ -1,33 +1,33 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { Button,ButtonsContainer } from "../../style/style";
+import { Button,ButtonsContainer, Option, Select } from "../../style/style";
+import styled from "styled-components";
+
+
 
 
 
 const AccountNav = ({user}) => {
-console.log('q',user)
+ 
+let history = useHistory();
+  const place=(value)=>{
+    history.push(`${value}`);
+  }
+
   return (
-    <ButtonsContainer>
-  <Link to='/account/details'>
-    <Button>הפרטים שלי</Button>
-  </Link>
-  <Link to='/account/projects'>
-    <Button>הפרויקטים שלי</Button>
-  </Link>
-
-  <Link to='/account/settings'>
-    <Button>הגדרות</Button>
-  </Link>
-
-  
+<Select portfolio dir="rtl" 
+        onChange={(e)=>{
+          return place(e.target.value)
+          }}>
+ <Option portfolio value={'/account/details'} >הפרטים שלי</Option>
+  <Option portfolio value={'/account/projects'}  >הפרויקטים שלי</Option>
+  <Option portfolio value={'/account/changepassword'} >שנה סיסמא</Option>
   {user&& (
-  <Link to='/account/requests'>
-  <Button>בקשות מלקוחות</Button>
-</Link>
+  <Option portfolio value={'/account/requests'} >הודעות לקוחות</Option>
   )}
-</ButtonsContainer>
+  </Select>
   );
 };
 

@@ -65,7 +65,7 @@ const RegisterForm = ({
         <FormButtons>
     <Button cancel onClick={() =>(closeModal())}>בטל</Button>
         <Button  onClick={reset}>נקה הכל</Button>
-        <Button success type='submit'>כנס</Button> 
+        <Button success type='submit'>הירשם</Button> 
         </FormButtons>
         </>
         )}

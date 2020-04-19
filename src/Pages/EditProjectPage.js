@@ -2,40 +2,36 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import FormProject from "../components/projectPage/FormProject";
-import { withFirestore } from "react-redux-firebase";
-import { toastr } from "react-redux-toastr";
+import { isEmpty } from "react-redux-firebase";
+
 import { updateProject } from "../Redux/actions/projectsActions";
 import { PageLayout } from "../style/style";
 
 class EditProjectPage extends Component {
   async componentDidMount() {
-    console.log('baaaaaaaa')
-    const { firestore, match, history } = this.props;
-    let project = await firestore.get(`projects/${match.params.id}`);
-console.log('b')
-
-    if (!project.exists) {
-      history.push("/portfolio");
-      toastr.error("Sorry", "Project Not Found");
+    let{match,project}=this.props;
+    if(isEmpty(project)) {
+      console.log('444444444ifwwwEMPYTY',match.params.id)
+      await this.props.getSingleProject(match.params.id);
+  }
+    else{
+      console.log('444444442222 tare ',project)
     }
+  }
+submitEdit = (values) =>{
+  console.log('4444444444wqq', values)
+    updateProject(values)         
+  this.props.history.push("/portfolio")
+console.log("1111111111editproject", values);
   }
   render() {
 
     return (
 <PageLayout>
-
-
             <FormProject initialValues={this.props.project}
               project={this.props.project}
-
-              onSubmit={project => {
-                console.log('wqq', project)
-                this.props.dispatch(
-                  updateProject(project)
-                );
-                this.props.history.push("/portfolio");
-                console.log("editproject", project);
-              }}
+              onSubmit={this.submitEdit}
+              
             />
 
           {/* <button
@@ -50,32 +46,24 @@ console.log('b')
     );
   }
 }
-const actions=()=>({
+const actions={
   updateProject
-})
+}
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state,ownProps) => {
 
-  const projectId = ownProps.match.params.id;
-  let project = {};
-  if (
-    state.firestore.ordered.projects &&
-    projectId &&
-    state.firestore.ordered.projects.length > 0
-  ) {
-    project = state.firestore.ordered.projects.filter(
-      project => project.id === projectId
-    )[0];
+  const urlId=ownProps.match.params.id;
+  let project={}
+  if(state.projects&&urlId&&state.projects.length>0){
+
+    project=state.projects.filter(project=>project.id===urlId)[0]
   }
-  return {
+  return{
     project,
     initialValues:project
+  }
+}
 
-  };
-
-};
-
-export default withFirestore(
-  connect(mapStateToProps,actions)(EditProjectPage)
-);   
+export default connect(mapStateToProps,actions)(EditProjectPage)
+ 
 

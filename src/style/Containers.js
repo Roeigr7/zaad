@@ -55,7 +55,7 @@ export const Square = styled.div`
   justify-content: flex-start;
   flex-grow: unset;
   flex-wrap: wrap;
-  border: 1px solid rgba(199, 202, 209, 0.8);
+  border: 1px solid rgba(232, 208, 143, 0.5);
   box-sizing: border-box; 
   font-family: "Heebo", sans-serif;
   @media (max-width: 768px) {

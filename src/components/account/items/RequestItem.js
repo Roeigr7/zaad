@@ -1,39 +1,38 @@
 import React from "react";
-import { H2, P, Span } from "../../../style/style";
+import {TitleAccordion ,AccordionContent, P, Span, ContainerAccordion} from "../../../style/style";
 import { format } from "date-fns";
 
 
 
 
-const RequestItem = ({req}) => {
-  return(
-<>
-{req? (<>
-<H2>{req.companyname}</H2>
- <P><Span>שם איש קשר: </Span> {req.contactname} </P>
- <P><Span>טלפון: </Span>{req.phone}</P>
- <P>{req.email}<Span> :אימייל</Span></P>
- <P><Span>מטרת הפרויקט: </Span>{req.projecttarget}</P>
- <P><Span>בקשות נוספות: </Span>{req.additional}</P>
- <P date><Span>נשלח בתאריך: </Span>{req.createdAt&& format (req.createdAt.toDate(), 'dd/MM/yyyy')}</P> 
-</>
-):(
-  <H2>lll</H2>
-)}
-   {/* //////////Delete button///////  
-          <Icon delete
-        onClick={() => {
-         deleteRequest(id);
-        }}
-      >
-<i class='fa fa-trash'></i></Icon>
+const RequestItem = ({companyname,contactname,phone,open,email,projecttarget,additional,createdAt,index,requestsTwo,toggleReq}) => {
 
-      <Link to={`/portfolio/${request.id}`}>
-CLICKPO
-   </Link> */}
-</>
- 
-  )}
+  return(
+
+<ContainerAccordion>
+<TitleAccordion onClick={()=>toggleReq(index)} open={open}>{companyname} <Span small thin >{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</Span></TitleAccordion>
+<AccordionContent open={open} >
+ <P small right><Span>שם איש קשר: </Span> {contactname} </P>
+ <P  small right><Span>טלפון: </Span>{phone}</P>
+ <P small right>{email}<Span> :אימייל</Span></P>
+ <P  small right><Span>מטרת הפרויקט: </Span>{projecttarget}</P>
+ <P small right><Span>בקשות נוספות: </Span>{additional}</P>
+ <P small right date><Span>נשלח בתאריך: </Span>{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</P> 
+ </AccordionContent>
+ </ContainerAccordion>
+
+)}
+//    {/* //////////Delete button///////  
+//           <Icon delete
+//         onClick={() => {
+//          deleteRequest(id);
+//         }}
+//       >
+// <i class='fa fa-trash'></i></Icon>
+
+//       <Link to={`/portfolio/${id}`}>
+// CLICKPO
+//    </Link> */}
 
 
 export default RequestItem;

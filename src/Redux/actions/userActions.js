@@ -1,25 +1,46 @@
 import { firebase, firestore } from "../../firebase/firebase";
 import { SubmissionError } from "redux-form";
 import { toastr } from "react-redux-toastr";
+import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";
 
 export const setCurrentUser = (user) => ({
   type: "SET_CURRENT_USER",
   payload: user,
 });
 
+///////////////////UPDATE PROFILE/////////////////////////////
 export const updateProfile = (user) => {
-  return async () => {
-    try {
-      await firebase.updateProfile(user);
-      toastr.success("Success", "Your profile has been updated");
-    } catch (error) {
-      throw new SubmissionError({
-        _error: error.message,
-      });
-    }
-  };
-};
-
+  return async (dispatch) => {
+   
+let reauthenticate=(currentPassword)=>{
+  let currentUser=firebase.auth().currentUser;
+  let cred=firebase.auth.EmailAuthProvider.credential(currentUser.email,currentPassword);
+return currentUser.reauthenticateWithCredential(cred)
+}
+reauthenticate(user.password).then (async()=>{
+    
+        dispatch(asyncActionStart());
+        await firebase.updateProfile({
+          fullName:user.fullName,
+          companyName:user.companyName,
+          phone:user.phone,
+          email:user.email,
+        })
+let currentUser=firebase.auth().currentUser;
+console.log(currentUser,'888888')   
+currentUser.updateEmail(user.email).then(() => {
+console.log('88888222',user.email)
+}).catch((error) =>{
+  console.log('1111112222222222222',error)
+});
+          dispatch(asyncActionFinish());
+           toastr.success("מעולה", "הפרטים עודכנו");
+   }).catch ((error) =>{
+console.log('22222221',error)
+    })
+  }
+}
+  
 export const getAllUsers = () => async (dispatch) => {
   let usersRef = firestore.collection("users");
   let query = usersRef.orderBy("fullName", "desc");

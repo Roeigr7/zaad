@@ -1,7 +1,9 @@
-import React, { Fragment} from "react";
+import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextInput from "./TextInput";
 import { combineValidators, isRequired } from "revalidate";
+import { Form, FormTitle } from "../style/Form";
+import { FormButtons, Button } from "../style/style";
 
 const validate = combineValidators({
   email: isRequired({ message: "Insert email !" }),
@@ -9,49 +11,56 @@ const validate = combineValidators({
 });
 
 
-const ProfileForm = ({updateProfile,handleSubmit,error}) => {
+const ProfileForm = ({cancel,updateProfile,handleSubmit,error}) => {
+
 
     return (
 
-    <Fragment>
-           <form
-            onSubmit={handleSubmit(updateProfile)}> 
+           <Form
+            onSubmit={handleSubmit(updateProfile)}>
+              <FormTitle>שנה פרטים</FormTitle> 
       <Field
           name='fullName'
           component={TextInput}
           type='text'
-          placeholder='Full Name'
+          ph='Full Name'
         />
         <Field
           name='companyName'
           component={TextInput}
           type='text'
-          placeholder='Company Name'
+          ph='Company Name'
         />
+
+
           <Field
           name='phone'
           component={TextInput}
           type='text'
-          placeholder='Phone'
+          ph='Phone'
         />
         
         <Field
           name='email'
           component={TextInput}
           type='text'
-          placeholder='email'
+          ph='email'
         />
         <Field
           name='password'
           component={TextInput}
           type='password'
-          placeholder='password'
+          ph='password'
         />
         {error&&<label>{error}</label>}
 
-        <button type='submit'>sjubmit</button>
-      </form>
-    </Fragment>
+        <FormButtons>
+    {/* <Button cancel onClick={() =>(closeModal())}>בטל</Button> */}
+        <Button cancel onClick={cancel}>בטל</Button>
+        <Button success type='submit'>שמור שינויים</Button>   
+        </FormButtons>
+      </Form>
+
   );
 };
 

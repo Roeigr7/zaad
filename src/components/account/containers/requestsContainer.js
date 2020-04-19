@@ -1,92 +1,60 @@
 import React, { Component } from "react";
 
-import { BookContainer } from "../../../style/style";
+import { Form } from "../../../style/style";
 
 import { connect } from "react-redux";
-import {getRequestLocal} from '../../../Redux/actions/requestsAction';
-import RequestItem from "../items/RequestItem";
+import { getRequestLocal } from "../../../Redux/actions/requestsAction";
 import styled, { css } from "styled-components";
-
-export const ButtonNB=styled.button`
-position:absolute;
-height:30px;
-background:transparent;
-border:none;
-box-sizing: border-box;
-top:15px;
-${p =>p.next &&
-    css`
-      left:0;
-
-    `};
-    right:0;
-
-
-&:hover{   
-    color:blue;
-    transition:color 1s;
-}
-`;
+import RequestsList from "../RequestsList";
+import RequestItem from "../items/RequestItem";
 
 class RequestsContainer extends Component {
-
-  constructor(props){
-    console.log('1111------ctor RequestsContainer')
+  constructor(props) {
     super(props);
-    this.state={
-    key:2,
-    list:[],
-    req:''
-    }
+    this.state = {
+      write: false,
+      open: false,
+      requestsTwo:[]
+    };
   }
-  async componentDidMount(){
-    console.log('1111------didmount RequestsContainer')
-   await this.props.getRequestLocal()
-   this.setState({
-    list: this.props.requests,
-    req: this.props.requests[0]
-    })
-
-     }
-  
-
-nextReq=()=>{
-      let newIndex=this.state.req.key+1;
-      if (newIndex>this.state.list.length-1){
-      newIndex=0
-      }
-      this.setState({
-        req:this.state.list[newIndex]
-      })
-  }
-
-prevReq=()=>{
-  let newIndex=this.state.req.key-1;
-  if (newIndex<0){
-    newIndex=this.state.list.length-1
-    }
+  async componentDidMount() {
+    await this.props.getRequestLocal()
+    this.setState({
+      requestsTwo: this.props.requests
+  })
+}
+toggleReq=index=>{
+  console.log('2222222bbbbbbbbbs',this.state.requestsTwo)
+  console.log('2222222sssssssss',index)
   this.setState({
-    req:this.state.list[newIndex]
-  })
-}
-
-render(){
-  return (
-  <>
-<BookContainer>
-<ButtonNB next onClick={()=>this.nextReq()}><i className="fas fa-backward"></i>הבא</ButtonNB>
-<RequestItem req={this.state.req}/>
-<ButtonNB onClick={()=>this.prevReq()}>הקודם<i className="fas fa-forward"></i></ButtonNB>
-</BookContainer>
-</>
-
-  );
-};
-}
-   const actions={
-    getRequestLocal
+ 
+requestsTwo:this.state.requestsTwo.map((req,i)=>{
+  if(i===index){
+    req.open=!req.open
+  }else{
+    req.open=false
   }
-  const mapStateToProps=(state)=>({
-   requests: state.requests
-  })
-  export default connect(mapStateToProps,actions)(RequestsContainer);
+  return req
+})
+})}
+render() {
+const { requestsTwo } = this.state;
+console.log(requestsTwo,'888lllllllllllll111')
+ return (
+  <Form>
+
+{requestsTwo&&requestsTwo.map((requestsTwo, i) => {
+
+return <RequestItem index={i} {...requestsTwo} toggleReq={this.toggleReq}/>;
+          })}
+     </Form>
+    );
+  }
+}
+const actions = {
+  getRequestLocal,
+};
+const mapStateToProps = (state) => ({
+  requests: state.requests,
+});
+export default connect(mapStateToProps, actions)(RequestsContainer);

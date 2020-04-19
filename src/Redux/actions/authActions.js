@@ -8,6 +8,7 @@ import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncAc
 export const login = uid => {
 return async (dispatch) => {
   try {
+  
   dispatch(asyncActionStart());
   let snap = await firestore.collection("users").doc(uid).get();
   let userAuth = {
@@ -68,10 +69,6 @@ export const startRegister = user => {
       let createdUser = await firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password);
-      await createdUser.user.updateProfile({
-        name: user.fullName
-      });
-
       await firestore
       .collection("users")
       .doc(createdUser.user.uid)
@@ -83,12 +80,14 @@ export const startRegister = user => {
         phone: user.phone,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
-        .then(function() {
+        .then(() =>{
           dispatch(asyncActionFinish());
         });
     } catch (error) {
       dispatch(asyncActionError());
-      console.log("lotob", error);
+      throw new SubmissionError({
+        _error: error.message
+      });
     }
   };
 };
@@ -99,24 +98,31 @@ export const Register = user => ({
 });
 
 
-////////////////UPDATE PASSWORD/////////
+////////////////UPDATE PASSWORD///////////////////////
 export const updatePassword=(creds)=>{
  
   return async (dispatch)=>{
-    const user=firebase.auth().currentUser
-    try{
-      dispatch(asyncActionStart());
-await user.updatePassword(creds.passOne)//לוקח בדיוק את הוואליוז שבפורם
-    await dispatch(reset('ChangePasswordForm'));
-    dispatch(asyncActionFinish());
-    toastr.success('Success','your password been update')
-      
-}catch (error) {
-  dispatch(asyncActionError());
-      throw new SubmissionError({
-        _error: error.message
-      });
+    let reauthenticate=(currentPassword)=>{
+      let currentUser=firebase.auth().currentUser;
+      let cred=firebase.auth.EmailAuthProvider.credential(currentUser.email,currentPassword);
+    return currentUser.reauthenticateWithCredential(cred)
     }
 
-    }
-  }
+return  reauthenticate(creds.currentPassword).then(async()=>{
+  console.log(creds.currentPassword,'222222222211curpassword')
+const user=firebase.auth().currentUser
+console.log(user,'222222222211curuser')
+dispatch(asyncActionStart());
+await user.updatePassword(creds.newPass)//לוקח בדיוק את הוואליוז שבפורם
+console.log('222222222211AFTERUPDATE')
+dispatch(asyncActionFinish());
+toastr.success('Success','your password been update')
+
+}).catch((error) =>{
+    dispatch(asyncActionError());
+   throw new SubmissionError({
+      _error: error.message
+    });
+})
+}
+}

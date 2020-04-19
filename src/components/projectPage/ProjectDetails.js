@@ -1,21 +1,17 @@
-import React from 'react';
-import {format} from 'date-fns';
-import { H2,P } from '../../style/style';
+import React from "react";
+import { format } from "date-fns";
+import { P, Form, FormTitle } from "../../style/style";
 
-
-
-const ProjectDetails = ({project}) => {
+const ProjectDetails = ({ project }) => {
   return (
-  <>
+    <Form>
+      <FormTitle>{project.title}</FormTitle>
 
+      <P>{project.description}</P>
 
-  <H2>{project.title}</H2>
-<br/>
-<P>{project.description}</P>
- 
-<P date> {project.date && format (project.date.toDate(), 'dd/MM/yyyy')}</P> 
-   </>
-      )
-    }
+      <P date> {project.date && format(project.date.toDate(), "dd/MM/yyyy")}</P>
+    </Form>
+  );
+};
 
 export default ProjectDetails;

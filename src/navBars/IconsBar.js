@@ -19,11 +19,12 @@ class IconsBar extends Component {
       speed: 500,
       slidesToShow: 5,
       arrows: false,
+     
       responsive: [
         {
           breakpoint: 728,
           settings: {
-     
+            slidesToScroll: 3,
             slidesToShow: 3,
             arrows: false,
           },

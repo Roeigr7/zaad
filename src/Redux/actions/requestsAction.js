@@ -8,14 +8,15 @@ import { toastr } from "react-redux-toastr";
 
 export const getRequestLocal = ()=>
   async(dispatch) => {
-    let requestRef = firestore.collection("ProjectRequest");
+    let requestRef = firestore.collection("projectRequest");
 
   try {
     let querySnap = await requestRef.get();
     let requests = [];
-    console.log('aaaaa',querySnap.docs.length);
+    console.log('aaaaa2222221',querySnap.docs.length);
     for (let i = 0; i < querySnap.docs.length; i++) {
-      let req = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id,key: i };
+      let req = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id,open:false,index:i };
+
       requests.push(req);
 
     }
@@ -30,22 +31,22 @@ export const getRequestLocal = ()=>
 };
 
 export const addNewRequest = (projectRequest = {}) => {
-    return async (dispatch) => {
+    return async () => {
       await firestore
-        .collection("ProjectRequest")
+        .collection("projectRequest")
   
         .doc()
         .set({
-          contactname: projectRequest.contactname? projectRequest.contactname:null,
-          companyname: projectRequest.companyname? projectRequest.companyname:null,
-          phone: projectRequest.phone ?projectRequest.phone :null,
-          email: projectRequest.email?projectRequest.email: null,
-          projecttarget: projectRequest.projecttarget ?projectRequest.projecttarget:null,
-          additional: projectRequest.additional?projectRequest.additional:null,
+          contactname: projectRequest.contactname? projectRequest.contactname:'',
+          companyname: projectRequest.companyname? projectRequest.companyname:'',
+          phone: projectRequest.phone ?projectRequest.phone :'',
+          email: projectRequest.email?projectRequest.email: '',
+          projecttarget: projectRequest.projecttarget ?projectRequest.projecttarget:'',
+          additional: projectRequest.additional?projectRequest.additional:'',
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          admin:projectRequest.admin?projectRequest.admin:false,
+          read: false,
         })
-        .then(function() {
+        .then(()=>{
           toastr.success("Success!", "New Project Added");
           console.log("Dcessfully written!",  projectRequest);
         });

@@ -34,7 +34,8 @@ const GlobalStyle = createGlobalStyle`
  text-align: center;
 height:100%;
 		margin: 0;
-		color: black;
+    color: black;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 
 	}
 `;

@@ -20,7 +20,7 @@ const LoginForm = ({loading,closeModal,reset,handleSubmit,startEmailPasswordLogi
     return (
     
  
-           <Form modal
+           <Form small
             onSubmit={handleSubmit(startEmailPasswordLogin)}> 
         {loading? (<Spinner/>):(
           <>

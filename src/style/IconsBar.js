@@ -9,6 +9,8 @@ export const Link = ({ isActive, children, ...props }) => {
 export const LinkIcon = styled(Link)`
   max-width: 80px;
   border-radius: 50%;
+  background-color:none;
+  transition: background-color 0.6s;
   &:hover {
     background: white;
   }

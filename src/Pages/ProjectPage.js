@@ -1,21 +1,21 @@
 import React, { Component }  from "react";
 import {connect} from 'react-redux';
-import ProjectDetails from "../components/projectPage/ProjectDetails";
+
 import {  isEmpty } from "react-redux-firebase";
-import { getProjectsFilter } from "../Redux/actions/projectsActions";
-import {BookContainer,ContainerLeft,ContainerRight,ContainerTogether, PageLayout}  from "../style/style";
+import {   getSingleProject} from "../Redux/actions/projectsActions";
+import {ContainerTogether, PageLayout, FormTitle, P, Form}  from "../style/style";
 
 import ReactPlayer from "react-player";
 import '../style/ReactPlayer.css'
-
+import { format } from "date-fns";
 
 class ProjectPage extends Component{
 
   async componentDidMount() {
   let{match,project}=this.props;
   if(isEmpty(project)) {
-    console.log('wwwEMPYTY',match.params.id)
-    await this.props.getProjectsFilter(3);
+    console.log('77777777ifwwwEMPYTY',match.params.id)
+    await this.props.getSingleProject(match.params.id);
 }
   else{
     console.log('wwwwww2222',project)
@@ -31,32 +31,25 @@ const {project}=this.props
 console.log('ssssssssss',project)
     return (
       <PageLayout>
+<Form big>
+      <FormTitle>{project.title}</FormTitle>
 
-<ContainerTogether>
-<ContainerLeft>
 <div className='player-wrapper'>
   <ReactPlayer
  className='react-player'
   url={project.videoUrl}
-
    controls={true}
     light={false}    
     width='100%'
     height='100%'
   />
 </div>
-  </ContainerLeft>
-  
-<ContainerRight>
-  <BookContainer>
- <ProjectDetails project={project}/> 
- </BookContainer>
-   </ContainerRight>
 
+ <P>{project.description}</P>
 
- 
-  </ContainerTogether>
+<P left date> {project.date && format(project.date.toDate(), "dd/MM/yyyy")}</P>
 
+ </Form>
       </PageLayout>
     );
   }
@@ -64,13 +57,15 @@ console.log('ssssssssss',project)
 
 
 const actions={
-  getProjectsFilter
+
+  getSingleProject
 }
 const mapStateToProps = (state,ownProps) => {
-  console.log('wwwwwww-mapstateProjectPage')
+
   const urlId=ownProps.match.params.id;
   let project={}
   if(state.projects&&urlId&&state.projects.length>0){
+
     project=state.projects.filter(project=>project.id===urlId)[0]
   }
   return{

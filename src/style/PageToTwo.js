@@ -1,50 +1,34 @@
 import styled from "styled-components"
 
-//////container details//////
-export const ContainerRight  = styled.div`
-
-width:30%;
-display:flex;
-flex-direction: column;
-
-margin: 30px 55px 0px 25px;
-text-align:right;
-
-@media (max-width: 768px) {
-  width:100%;
-  margin: 0;
-}`
-
-
-//////container project///////////
-export const ContainerLeft= styled.div`
-  margin: 30px 55px 0px 25px;
-  text-align:right;
-  float:right;
-  width:50%;
-  margin-left:10%;
-padding:0;
-border: 6px solid white;
-border-radius: 4px;
-box-shadow:0 2px 10px rgba(100,255,150,.8);
-  @media (max-width: 768px) {
-  width:100%;
-  margin: 0;
-
-
-}`
-
 ////////container together////////////
 export const ContainerTogether= styled.div`
- border: 1px solid green;
+margin-top:10px;
  display:flex;
- margin-top:8px;
-justify-content:right;
-
+ flex: 1 0 100%;
+ box-sizing: border-box; 
+flex-direction:row-reverse;
+flex-wrap:wrap;
  @media (max-width: 768px) {
-   width:100%;
-   display:flex;
-   flex-direction:column;
-
+ 
  }`
-  
+
+  export const ContainerRight= styled.div`
+  flex: 1 1 50%;
+  box-sizing: border-box; 
+
+  @media (max-width: 768px) {
+    flex: 1 0 100%;
+ 
+ }
+ `
+
+ export const ContainerLeft =styled.div`
+ display:flex;
+ box-sizing: border-box; 
+ flex: 1 1 50%;
+ flex-wrap:wrap;
+ @media (max-width: 768px) {
+min-height:50px;
+
+}
+`

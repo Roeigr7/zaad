@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Button = styled.button`
 box-sizing: border-box;
+cursor:pointer;
  background-image:${p=>
- p.success? 'linear-gradient(to top, #00b710 51%, #35657D 50%)':
-p.cancel? 'linear-gradient(to top, red 51%, #35657D 50%)':
-'linear-gradient(to top, #b3b6bc 51%, #35657D 50%)' };
+ p.success? ' linear-gradient(0deg, rgba(0,183,16,1) 51%, rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%)':
+p.cancel? 'linear-gradient(to top, red 51%,rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);':
+'linear-gradient(to top, #e0ae50 51%,rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);' };
 background-size: 100% 200%;
   background-position: top;
   transition: background-position 0.3s ease-in-out;
@@ -31,6 +32,10 @@ width:${p=>p.showmore ? '150px':''};
 outline:none;
 }
 &:active{
+  background-image:${p=>
+ p.success?  'linear-gradient(to top, #03a510,#03a510 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);':
+p.cancel? 'linear-gradient(to top, #e50000 51%,#e50000 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);':
+'linear-gradient(to top, #D6A549 51%,#D6A549 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);'};
  top:1px;
   position:relative;
 outline:none;
@@ -60,58 +65,6 @@ export const ButtonForm = styled.button`
     top: 1px;
   }
 `;
-/////BUTTON NEAR TEXTAREA HOMEPAGE////////
-export const Buttonmmm = styled.button`
-  box-shadow: inset 0px 1px 0px 0px #9fb4f2;
-  background: linear-gradient(to bottom, #5277b3 5%, #4279b8 100%);
-  background-color: #5277b3;
-  border: 1px solid #4e6096;
-  cursor: pointer;
-  color: #ffffff;
-
-  font-family: Arial;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 6px 12px;
-  text-decoration: none;
-  display: block;
-  position: absolute;
-  float: right;
-
-  &:hover {
-    background: linear-gradient(to bottom, #4279b8 5%, #5277b3 100%);
-    background-color: #4279b8;
-  }
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-`;
-
-export const Butt = styled.button`
-display:inline-block;
-width:200px;
-height:70px;
-padding: 0.35em 1.2em;
-border:2px solid #FFFFFF;
-margin:0 0.3em 0.3em 0;
-border-radius:4px;
-background: linear-gradient(180deg, rgba(255,255,255,0) 20%, rgba(250,250,250,0.5) 100%);
-color:white;
-box-sizing: border-box;
-text-decoration:none;
-font-family:'Roboto',sans-serif;
-text-align:center;
-transition: all 0.2s;
- &:hover{
-color:#000000;
-background-color:#f1f1f1;
-}
-@media (max-width: 768px) {
-  width:50%;
-    display:inline-block;
-    margin:0 auto;
-}`;
 
 
 ///////button container nav////////
