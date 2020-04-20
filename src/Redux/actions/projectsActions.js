@@ -61,6 +61,7 @@ export const deleteProject = (id) => {
 //UPDATE_PROJECT_ACTION
 export const updateProject = async (project) => {
   try {
+    
     await firestore
       .collection("projects")
       .doc(project.id)

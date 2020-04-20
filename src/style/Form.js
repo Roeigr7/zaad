@@ -62,7 +62,6 @@ border-radius:4px;
 export const InputContainer = styled.div`
 position:relative;
 margin-top:10px;
-
 padding:0;
 
 `
@@ -193,7 +192,7 @@ background-color:#c7cad1;
 padding:8px 10px;
 font-size:16px;
 color:#c7cad1;
-margin-bottom:${p => p.portfolio ? '0px': '30px'};
+margin-bottom:${p => p.small ? '0px': p.big? '30px' : '10px'};
 border: none;
 border-bottom: 2px solid #dfc887;
 outline:none;
@@ -269,3 +268,5 @@ right:13px;
 top:9px;
 cursor:pointer;
 `
+
+export const BoxContent=Form.withComponent('div')

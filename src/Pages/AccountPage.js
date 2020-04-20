@@ -73,9 +73,9 @@ const AccountPage = ({history , user, updatePassword, updateProfile, requests })
     <PageLayout>
       <ContainerTogether>
         <ContainerRight>
-          <AccountNav />
+          <AccountNav history={history} />
         </ContainerRight>
-
+{/* ///////////////////LEFT---->PAGES/////////////////////////////////// */}
         <ContainerLeft>
           <Switch>
             <Redirect exact from='/account' to='/account/details' />

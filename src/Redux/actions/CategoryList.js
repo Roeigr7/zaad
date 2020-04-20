@@ -8,3 +8,11 @@ export const categories = [
     { fullName: 'אחר', id: 'other'},
     { fullName: 'מועדפים', id: 'favorites'},
 ];
+
+export const accountNav= [
+    { a: 'אנימציה', b: 'animation'},
+    { a: 'קורסים דיגיטלים', b: 'digitalcourses'},
+    { a: 'ארועים וכנסים', b: 'events'},
+    { a: 'פרסומות', b: 'commercials'},
+
+];

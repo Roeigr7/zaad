@@ -1,31 +1,24 @@
 import React from "react";
-
-import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { Button,ButtonsContainer, Option, Select } from "../../style/style";
-import styled from "styled-components";
+import { Option, Select } from "../../style/style";
+import accontNav from '../../'
 
 
-
-
-
-const AccountNav = ({user}) => {
+const AccountNav = ({user,history}) => {
  
-let history = useHistory();
-  const place=(value)=>{
-    history.push(`${value}`);
-  }
 
   return (
-<Select portfolio dir="rtl" 
-        onChange={(e)=>{
-          return place(e.target.value)
+<Select dir="rtl" 
+        onChange={(e)=>{  
+         history.push(`${e.target.value}`);  
+  
           }}>
- <Option portfolio value={'/account/details'} >הפרטים שלי</Option>
-  <Option portfolio value={'/account/projects'}  >הפרויקטים שלי</Option>
-  <Option portfolio value={'/account/changepassword'} >שנה סיסמא</Option>
+<Option value=''>details</Option>
+ <Option value='/account/details'>details</Option>
+  <Option value='/account/projects'>projects</Option>
+  <Option value='/account/changepassword'>pass</Option>
   {user&& (
-  <Option portfolio value={'/account/requests'} >הודעות לקוחות</Option>
+  <Option value='/account/requests'>messages</Option>
   )}
   </Select>
   );

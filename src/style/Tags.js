@@ -57,6 +57,7 @@ word-wrap: break-word;
 font-size:${p=>p.small? '14px':p.tiny? '12px':'16px'};
 text-align:${p=>p.left? 'left' : p.right? 'right' :'center'};
 color:${p=>p.white? '#FAFAFA': '0f1f2f'};
+
 `
 export const Span = styled.span`
 line-height: 0.2;

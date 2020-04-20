@@ -61,8 +61,8 @@ const App=()=>{
             <PrivateRoute path='/addproject' component={AddProjectPage} />
             <PublicRoute path='/register' component={HomePage} />
             <PublicRoute path='/login' component={HomePage} />
-            <PrivateRoute path='/edit/:id' component={EditProjectPage} />
-            <PrivateRoute path='/account' component={AccountPage} />
+            <Route path='/edit/:id' component={EditProjectPage} />{/*private*/}
+            <Route path='/account' component={AccountPage} />{/*private*/}
             <Route component={PageNotFound} />
           </Switch>
           <IconsBar/>

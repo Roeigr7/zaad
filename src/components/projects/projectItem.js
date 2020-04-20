@@ -18,9 +18,9 @@ import { withFirebase } from "react-redux-firebase";
 import '../../style/ReactPlayer.css';
 
 
-const ProjectItem = ({ date,deleteProject,id,category, title, videoUrl,user }) => {
- console.log('ole',user)
- console.log('ole',user.admin)
+const ProjectItem = ({date,deleteProject,id,category, title, videoUrl,user }) => {
+
+
 
   return(
  <Square>

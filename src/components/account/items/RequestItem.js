@@ -1,12 +1,14 @@
 import React from "react";
 import {TitleAccordion ,AccordionContent, P, Span, ContainerAccordion} from "../../../style/style";
 import { format } from "date-fns";
+import transfer from '../../../utilities/transfer.png';
 
+import { connect } from "react-redux";
+import {transferToArchive} from '../../../Redux/actions/requestsAction'
 
+const RequestItem = ({onClickParent,history,read,id,transferToArchive,companyname,contactname,phone,open,email,projecttarget,additional,createdAt,index,toggleReq}) => {
 
-
-const RequestItem = ({companyname,contactname,phone,open,email,projecttarget,additional,createdAt,index,requestsTwo,toggleReq}) => {
-
+  console.log('777777',read,'key',id)
   return(
 
 <ContainerAccordion>
@@ -18,6 +20,9 @@ const RequestItem = ({companyname,contactname,phone,open,email,projecttarget,add
  <P  small right><Span>מטרת הפרויקט: </Span>{projecttarget}</P>
  <P small right><Span>בקשות נוספות: </Span>{additional}</P>
  <P small right date><Span>נשלח בתאריך: </Span>{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</P> 
+ <button  onClick={()=>onClickParent(id,read)}>{companyname} >העבר לארכיון
+ <img style={{float:'right',width:'25px'}} alt='' src={transfer}/>
+ </button>
  </AccordionContent>
  </ContainerAccordion>
 
@@ -35,4 +40,10 @@ const RequestItem = ({companyname,contactname,phone,open,email,projecttarget,add
 //    </Link> */}
 
 
-export default RequestItem;
+const actions = {
+
+  // deleteRequest: id=>dispatch(deleteRequest(id))
+};
+
+export default connect(null,actions)(RequestItem);
+
