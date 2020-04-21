@@ -105,7 +105,7 @@ export const Link = ({send,logo,isActive, children, ...props}) => {
 export const StyledLink = styled(Link)`
 text-decoration:none;
 position:relative;
-color:${p=>p.send? '#dfc887':'#eaedf2'};/*text*/
+color:${p=>p.yellow? '#fce7b3':'#eaedf2'};/*text*/
 display: block;
 font-weight:${p=>p.isActive ? 'bold' :''};
 padding:13px;

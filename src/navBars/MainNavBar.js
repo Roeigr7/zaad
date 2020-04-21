@@ -63,7 +63,7 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
 
           {/* Add project button if authenticated */}
           {auth && (
-            <Li><StyledLink style={{color:'yellow'}}
+            <Li><StyledLink yellow
                 to='/addproject'
                 isActive={pathname === "/addproject"}
               >
@@ -86,7 +86,7 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
           </Li>
           <Li>
 
-            <StyledLink send 
+            <StyledLink yellow
               to='/sendrequest'
               isActive={pathname === "/sendrequest"}
             >

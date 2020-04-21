@@ -5,13 +5,11 @@ import { connect } from "react-redux";
 import { addReview, getReviewsLocal } from "../Redux/actions/reviewActions";
 import { getHomePageProjects } from "../Redux/actions/projectsActions";
 import Spinner from "../components/Spinner";
-import {PageLayout,ContainerUp,ContainerMid, H1, P} from "../style/style";
-import styled from "styled-components";
-import logoTitle from "../utilities/logoTitle.png";
+import {PageLayout,ContainerUp,ContainerMid, H4, LogoTitle} from "../style/style";
 
-export const LogoTitle = styled.img`
-width:55%;
-`
+import logoTitle from "../utilities/logoTitle.png";
+import {titleText} from '../utilities/constAccessories'
+
 
 ///========================================================//////
 class HomePage extends Component {
@@ -29,15 +27,10 @@ if (loading) return <Spinner />;
         
         <ContainerUp>
          
-         <LogoTitle src={logoTitle} alt='zaadlogo'/>
-  
-<P>אנחנו מתמחים בהפקות וידאו וסאונד בכל המישורים.
-החל מכתיבת התסריט, תכנון הסטורי בורד, תוך בימוי, צילום ,הקלטות, הנפשות, עד רמת המוצר המוגמר. כמו כן, יש לנו אולפן הקלטות מקצועי המתמחה בהפקות מוזיקליות, הקלטות ומיקס לרמת סאונד המקסימלית. תציצו בתיק העבודות המשובח שלנו, ותמצאו טירוף של סרטי תדמית, סרטי מוצר, סרטים לקמפיינים ברשתות החברתיות, מוסיקה ועוד.
-
-</P>
+         <LogoTitle src={logoTitle} alt='zaadlogo'/>{titleText}
         </ContainerUp>
         <ContainerMid>
-      <H1>פרויקטים אחרונים</H1>
+      <H4>פרויקטים אחרונים</H4>
           <ProjectsList projects={projects} />
         </ContainerMid>
 

@@ -3,6 +3,8 @@ import { Link } from "./Header";
 
 /////////////////////1-CONTAINER UP///////////////////
 export const ContainerUp = styled.div`
+
+box-sizing:border-box;
   flex-flow: row wrap;
   display: flex;
   justify-content: center;
@@ -11,37 +13,27 @@ export const ContainerUp = styled.div`
   width: 50%;
   color: white;
   font-family: "Heebo", sans-serif;
+  margin: 5px auto 0 auto;
 
-  margin: 10px auto;
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
 ////////////MID CONTAINER///////////
 export const ContainerMid = styled(ContainerUp)`
+box-sizing:border-box;
   width: 100%;
   justify-content: left;
   padding: 0;
 `;
 //////3-Container BOTTOM///////////
 export const ContainerBot = styled(ContainerMid)`
+border:2px solid orange;
+box-sizing:border-box;
   padding: 0;
   margin: 0;
 `;
-//////Footer//////////
-export const Footer = styled.footer`
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  height: 55px;
-  justify-content: center;
-  width: 100%;
-  border-top: 7px solid #14293a;
-  background-color: #939097;
-  color: white;
-  bottom: 0;
-  text-align: center;
-`
+
 export const BottomLink = styled(Link)`
 padding:0;
 `;
@@ -55,7 +47,7 @@ export const Square = styled.div`
   justify-content: flex-start;
   flex-grow: unset;
   flex-wrap: wrap;
-  border: 1px solid rgba(232, 208, 143, 0.5);
+  border: 0.5px solid rgb(252, 231, 179, 0.8);
   box-sizing: border-box; 
   font-family: "Heebo", sans-serif;
   @media (max-width: 768px) {
@@ -64,6 +56,7 @@ export const Square = styled.div`
 `;
 //////////Container ABOUT//////////
 export const ContainerAbout = styled.div`
+border:2px solid blue;
 margin:0 auto;
 width:50%;
 

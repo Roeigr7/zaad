@@ -11,7 +11,7 @@ import { Form,FlexFields , FormTitle, SelectWrapper } from "../../style/Form";
 import {Button, FormButtons} from "../../style/style";
 import {getAllUsers} from '../../Redux/actions/userActions';
 
-import { categories } from "../../Redux/actions/CategoryList";
+import { categories } from "../../utilities/constAccessories";
 
 
 

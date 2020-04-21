@@ -58,7 +58,7 @@ color: white;
 <A contact vim href="https://vimeo.com/zaad"><i style={{color:'#19B7EA', fontSize:'300%', position:'relative'}} className="fab fa-vimeo-square"></i></A>
 </SocialContainer>
 </ContainerRight>
-<ContainerLeft>
+<ContainerLeft map>
  <GoogleMap/>
 </ContainerLeft>
  </ContainerTogether>

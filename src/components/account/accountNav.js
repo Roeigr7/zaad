@@ -13,12 +13,12 @@ const AccountNav = ({user,history}) => {
          history.push(`${e.target.value}`);  
   
           }}>
-<Option value=''>details</Option>
- <Option value='/account/details'>details</Option>
-  <Option value='/account/projects'>projects</Option>
-  <Option value='/account/changepassword'>pass</Option>
+
+ <Option value='/account/details'>הפרטים שלי</Option>
+  <Option value='/account/projects'>הפרויקטים שלי</Option>
+  <Option value='/account/changepassword'>שנה סיסמא</Option>
   {user&& (
-  <Option value='/account/requests'>messages</Option>
+  <Option value='/account/requests'>הודעות מלקוחות</Option>
   )}
   </Select>
   );

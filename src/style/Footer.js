@@ -6,12 +6,34 @@ export const Link = ({ isActive, ig, fb, vim, children, ...props }) => {
   return <RRD {...props}>{children}</RRD>;
 };
 
+
+//////Footer CONTAINER//////////
+export const Footer = styled.footer`
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  height: 45px;
+  justify-content: center;
+  width: 100%;
+  box-sizing:border-box;
+  border-top: 2px solid #939097;
+  background-color: #cccccc;
+  color: white;
+  bottom: 0;
+  text-align: center;
+`
+
+
+
 export const SocialLink = styled.a`
   width: 400px;
   height: 400px;
   border-radius: 50%;
   background: red;
 `;
+
+///////////////////EACH LINK IN THE FOOTER//////////////
 export const LinkFooter = styled(Link)`
   text-decoration: none;
   position: relative;
@@ -19,7 +41,7 @@ export const LinkFooter = styled(Link)`
   display: ${(p) => (p.contact ? "inline-block" : "block")};
   font-weight: ${(p) => (p.isActive ? "bold" : "")};
   padding: ${(p) =>
-    p.ig || p.fb || p.vim ? "13px 7px 0px 7px" : "13px 10px 0px 10px"};
+    p.ig || p.fb || p.vim ? "10px 7px 0px 7px" : "10px 10px 0px 10px"};
   &:after {
     content: "";
     display: block;

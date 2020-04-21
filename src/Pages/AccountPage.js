@@ -35,34 +35,7 @@ export const CDetails = styled.div`
   }
 `;
 
-//////container project///////////
-export const CProject = styled.div`
-  margin: 30px 55px 0px 25px;
-  text-align: right;
-  float: right;
-  width: 50%;
-  margin-left: 10%;
-  padding: 0;
-  border: 6px solid white;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(100, 255, 150, 0.8);
-  @media (max-width: 768px) {
-    width: 100%;
-    margin: 0;
-  }
-`;
-export const Cont = styled.div`
-  border: 1px solid green;
-  display: flex;
 
-  justify-content: right;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-`;
 
 const AccountPage = ({history , user, updatePassword, updateProfile, requests }) => {
 

@@ -3,7 +3,7 @@ import React from "react";
 import './inputContainer.css'
 
 import { Select,Option } from "../../style/style";
-import { categories } from "../../Redux/actions/CategoryList";
+import { categories } from "../../utilities/constAccessories";
 
 
 const PortfolioFilter = ({catFilter}) => (

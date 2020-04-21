@@ -83,7 +83,7 @@ width:100%;
 padding:8px 0;
 font-size:16px;
 color:#f4f4f4;
-
+direction: rtl;
 border:none;
 border-bottom: 1px solid #e1e4ea;
 outline:none;
@@ -119,6 +119,7 @@ text-align:right;
 export const TextArea = styled.textarea.attrs(()=>({
     rows: '1'
 }))`
+ direction: rtl;
 background-color:#c7cad1;
 width:100%;
 padding:8px 0;
@@ -126,7 +127,7 @@ font-size:16px;
 color:#f4f4f4;
 
 border:none;
-
+font-family: 'Heebo', sans-serif;
 border-bottom: 1px solid #c7cad1;
 outline:none;
 background:transparent;
@@ -186,8 +187,7 @@ background:transparent;
 
 export const Select = styled.select`
 box-sizing:border-box;
-max-width: 100%;
-text-overflow: ellipsis;
+
 background-color:#c7cad1;
 padding:8px 10px;
 font-size:16px;
@@ -199,8 +199,9 @@ outline:none;
 background:transparent;
 text-align:right;
 border-radius:4px;
-
-
+@media (max-width: 768px) {
+   width:90%;
+ }
 
 
 &:focus ~  ${Label} {

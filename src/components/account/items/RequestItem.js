@@ -1,14 +1,19 @@
 import React from "react";
-import {TitleAccordion ,AccordionContent, P, Span, ContainerAccordion} from "../../../style/style";
+import {ButtonSpecial,TitleAccordion ,AccordionContent, P, Span, ContainerAccordion} from "../../../style/style";
 import { format } from "date-fns";
-import transfer from '../../../utilities/transfer.png';
 
 import { connect } from "react-redux";
-import {transferToArchive} from '../../../Redux/actions/requestsAction'
 
-const RequestItem = ({onClickParent,history,read,id,transferToArchive,companyname,contactname,phone,open,email,projecttarget,additional,createdAt,index,toggleReq}) => {
+const RequestItem = ({onClickParent,read,id,companyname,contactname,phone,open,email,projecttarget,additional,createdAt,index,toggleReq}) => {
 
-  console.log('777777',read,'key',id)
+
+const title =(read)=>{
+  switch (read) {
+    case true:
+      return 'העבר לחדשות';
+    default: return 'העבר לארכיון';
+  }
+}
   return(
 
 <ContainerAccordion>
@@ -20,9 +25,7 @@ const RequestItem = ({onClickParent,history,read,id,transferToArchive,companynam
  <P  small right><Span>מטרת הפרויקט: </Span>{projecttarget}</P>
  <P small right><Span>בקשות נוספות: </Span>{additional}</P>
  <P small right date><Span>נשלח בתאריך: </Span>{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</P> 
- <button  onClick={()=>onClickParent(id,read)}>{companyname} >העבר לארכיון
- <img style={{float:'right',width:'25px'}} alt='' src={transfer}/>
- </button>
+ <ButtonSpecial onClick={()=>onClickParent(id,read)}>{title(read)}</ButtonSpecial>
  </AccordionContent>
  </ContainerAccordion>
 

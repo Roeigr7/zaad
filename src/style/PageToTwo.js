@@ -15,7 +15,7 @@ flex-wrap:wrap;
   export const ContainerRight= styled.div`
   flex: 1 1 50%;
   box-sizing: border-box; 
-
+  border:2px solid grey;
   @media (max-width: 768px) {
     flex: 1 0 100%;
  
@@ -23,12 +23,12 @@ flex-wrap:wrap;
  `
 
  export const ContainerLeft =styled.div`
- display:flex;
+
  box-sizing: border-box; 
  flex: 1 1 50%;
- flex-wrap:wrap;
+ border:2px solid brown;
  @media (max-width: 768px) {
-min-height:50px;
 
+flex: 1 0 100%;
 }
 `

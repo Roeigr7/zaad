@@ -32,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
     background-repeat: no-repeat;
     background-size:cover;
  text-align: center;
+
 height:100%;
 		margin: 0;
     color: black;

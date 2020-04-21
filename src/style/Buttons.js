@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import transfer from '../utilities/transfer.png';
 
+/////////////////BUTTTON////////////////////////////////////////////////
 export const Button = styled.button`
 box-sizing: border-box;
 cursor:pointer;
  background-image:${p=>
  p.success? ' linear-gradient(0deg, rgba(0,183,16,1) 51%, rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%)':
 p.cancel? 'linear-gradient(to top, red 51%,rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);':
+p.active? 'linear-gradient(to top, #e0ae50 100%,rgba(59,113,137,1)) ;' :
 'linear-gradient(to top, #e0ae50 51%,rgba(59,113,137,1) 51%, rgba(59,113,137,1) 71%, rgba(77,126,147,1) 75%);' };
+
 background-size: 100% 200%;
   background-position: top;
   transition: background-position 0.3s ease-in-out;
@@ -20,7 +24,6 @@ border-radius:3px;
 min-width:70px;
 height:30px;
 width:${p=>p.showmore ? '150px':''};
-
 
 &:hover{
   background-position: bottom;
@@ -79,4 +82,36 @@ margin-right: 80px;
 
 export const FormButtons=styled.div`
 flex-direction:row;
+`
+
+//////////////BUTTON SPECIAL////////////////////////
+export const ButtonSpecial=styled.div`
+position:relative;
+font-size:14px;
+margin:5px;
+text-align:left;
+cursor:pointer;
+color:#E0AE50;
+
+&:after{
+    content:'';
+    position: absolute;
+    top:50%;
+margin-left:3px;
+    transform:translateY(-50%);
+    width:20px;
+    height:20px;
+    background-image:url(${transfer});
+    background-position:center;
+    background-size:contain;
+    background-repeat:no-repeat;
+
+  transition: all 0.4s ease;
+}
+&:hover&:after{
+transform:translateY(-50%) rotate(180deg);
+}
+&:hover{
+font-weight:bold;
+}
 `

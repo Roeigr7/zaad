@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { getReviewsLocal, addReview } from "../../Redux/actions/reviewActions";
 import ReviewItem from "./ReviewItem";
-import {  BookContainer, ButtonRev,  Button } from "../../style/style";
+import {  ReviewContainer, ButtonRev,  Button } from "../../style/style";
 import { connect } from "react-redux";
 import ReviewForm from "../../Form/ReviewForm";
 
@@ -56,7 +56,7 @@ write: !this.state.write
     return (
       <>
 
-            <BookContainer>
+            <ReviewContainer>
             {this.state.write ? (
         <ReviewForm cancel={this.writeFunc} addReview={addReview}/>
                 ) : (
@@ -71,7 +71,7 @@ write: !this.state.write
               </ButtonRev>
               </>
             )}
-            </BookContainer>
+            </ReviewContainer>
             {/* <Button onClick={this.writeFunc}>כתוב תגובה חדשה</Button> */}
 
     

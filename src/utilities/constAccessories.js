@@ -1,3 +1,6 @@
+import React from 'react';
+import { P } from "../style/Tags";
+
 export const categories = [
     { fullName: 'אנימציה', id: 'animation'},
     { fullName: 'קורסים דיגיטלים', id: 'digitalcourses'},
@@ -9,10 +12,12 @@ export const categories = [
     { fullName: 'מועדפים', id: 'favorites'},
 ];
 
-export const accountNav= [
-    { a: 'אנימציה', b: 'animation'},
-    { a: 'קורסים דיגיטלים', b: 'digitalcourses'},
-    { a: 'ארועים וכנסים', b: 'events'},
-    { a: 'פרסומות', b: 'commercials'},
+export const titleText=(
+<P marg bold>
+    חברתינו מתמחה בכל תחומי הוידאו והסאונד
+      <br/>
+  בתיק העבודות שלנו תוכלו למצוא מגוון רחב של
+   <br/>
+   סרטוני תדמית משובחים, סרטי מוצר, פרסומות, קליפים, הפקות שירים ועוד
 
-];
+</P>)

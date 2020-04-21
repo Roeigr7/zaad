@@ -2,20 +2,25 @@ import styled  from "styled-components";
 
 
 //////////BookContainer
-export const BookContainer=styled.div`
+export const ReviewContainer=styled.div`
+
 width:50%;
+background-color:#224356;
 display:flex;
+margin: 10px auto 0  auto;
 flex-flow: row wrap;
 justify-content:center;
+border-radius:0 0px 8px 8px;
+align-items:center;
 position:relative;
-margin:0 auto;
+border: 1px solid rgb(252, 231, 179, 0.5);
 padding:0;
 @media(max-width: 768px){
-width:100%;
+width:95%;
 }
 `
 export const ReviewContent=styled.div`
-
+box-sizing:border-box;
 flex:1 1 100%;
 color:#c7cad1;
 background:none;
@@ -30,7 +35,7 @@ border:none;
 color:#e8d08f;
 box-sizing:border-box;
 background:none;
-font-size:16px;
+font-size:14px;
 padding-bottom:2px;
 margin:0;
 
@@ -48,13 +53,4 @@ top:1px;
 }
 ` 
 
-export const H4=styled.h4`
-color:#fce7b3;
-font-weight:bold;
-border-bottom:1px solid #d2d4d8;
-`
-export const PP=styled.p`
-color:#c7cad1;
-font-size:${p=>p.details ? '12px': '16px'};
-text-align: ${p=>p.details ? 'left': 'center'};
-`
+

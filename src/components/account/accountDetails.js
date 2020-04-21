@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyledLink, P, Form, FormTitle, Button, Link } from "../../style/style";
+import { StyledLink, P, BoxContent, FormTitle, Button, Link } from "../../style/style";
 import styled from "styled-components";
 
 
@@ -19,7 +19,7 @@ const AccountDetails = ({user}) => {
 
   return (
 <>
-    <Form>
+    <BoxContent>
       <FormTitle>הפרטים שלי</FormTitle>
       <P bigspace right>{user&&user.fullName} <b>:שם</b>
       <br/>
@@ -30,7 +30,7 @@ const AccountDetails = ({user}) => {
  {user&&user.email} <b>:אימייל</b>
      </P>
   <Link to='/account/details/edit'><Button>שנה פרטים</Button></Link>
-      </Form>
+      </BoxContent>
         {/* // <MDBListGroupItem>{user.password}</MDBListGroupItem> */}
   
   </>

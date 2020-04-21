@@ -1,18 +1,14 @@
 import React, { Component } from "react";
-
-import { BoxContent, Button} from "../../../style/style";
-
+import { BoxContent, Button,FormButtons} from "../../../style/style";
 import { connect } from "react-redux";
 import { getRequestLocal,transferToArchive } from "../../../Redux/actions/requestsAction";
-import styled, { css } from "styled-components";
-import RequestsList from "../RequestsList";
 import RequestItem from "../items/RequestItem";
 
 class RequestsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      active:true, /*true->new . false->archive*/
       requestsList:[]
     };
   }
@@ -24,7 +20,6 @@ class RequestsContainer extends Component {
     });
   }
   toggleReq = (index) => {
-    console.log('777torlgereqinside ',index)
  this.setState({
           requestsList: this.state.requestsList.map((req, i) => {
             if (i === index) {
@@ -41,26 +36,26 @@ class RequestsContainer extends Component {
         console.log('OOOOOOONBEFORECLICKF1111athala',id,read,this.state.requestsList)
         this.props.transferToArchive(id,read)
         await this.props.getRequestLocal();
-        console.log('OOOOOONCLICKFAFTERACTION',this.props.requests)
-    
-        console.log('OOOOOOOOOONCLICKFsof',this.state.requestsList)
+        this.setState({
+          requestsList: this.props.requests.filter((req) => req.read===read),
+        });
       }
-  render() {
+  
+      render() {
 
-console.log('4444444list',this.state.requestsList)
-console.log('4444444act',this.props.requests)
-const { requestsList} = this.state;
+const { active,requestsList} = this.state;
 const{requests}=this.props;
-    return (
-      <>
-   
-        <Button style={{flex:'1 1 45%'}} onClick={() => this.setState({  requestsList: requests.filter((req) => req.read) })}>
+    
+return (
+           <BoxContent>
+           <FormButtons>
+        <Button active={!active}  onClick={() => this.setState({  active:!active, requestsList: requests.filter((req) => req.read) })}>
     ארכיון
         </Button>
-        <Button style={{flex:'1 1 45%'}}  onClick={() => this.setState({  requestsList: requests.filter((req) => !req.read) })}>
+        <Button active={active} onClick={() => this.setState({  active:!active,requestsList: requests.filter((req) => !req.read) })}>
 בקשות חדשות
         </Button>
-        <BoxContent>
+        </FormButtons>
 {requestsList && requestsList.map((req, i) => {
                 return (
                   <RequestItem key={req.id} index={i} {...req} toggleReq={this.toggleReq} onClickParent={this.onClickf}/>
@@ -68,7 +63,7 @@ const{requests}=this.props;
               })}
 
         </BoxContent>
-      </>
+
     );
   }
 }

@@ -36,3 +36,10 @@ width: 50%;
 }
 `;
 
+export const LogoTitle = styled.img`
+width:40%;
+
+@media (max-width: 768px) {
+  width:55%;
+}
+`
