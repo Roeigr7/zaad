@@ -1,29 +1,36 @@
 import { firebase, firestore } from "../../firebase/firebase";
 
 import { toastr } from "react-redux-toastr";
+import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";
+import { SubmissionError } from "redux-form";
 
 /////add review comment new user to dataBase//////
-export const addReview = async(comment) => {
+export const addReview = (comment) => async (dispatch) => {
     try {
-       await firestore.collection("Reviews").doc().set({
+      console.log('3333333333333333333333')
+      dispatch(asyncActionStart())
+       await firestore.collection("reviews").doc().set({
         name: comment.name,
         content: comment.content,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       });
-      toastr.success("Success!", "Project have been deleted");
+      dispatch(asyncActionFinish())
+      toastr.success("מצוין", "תגובתך נוספה בהצלחה");
 
     } catch (error) {
-      console.log("lotob", error);
+      dispatch(asyncActionError())
+      toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
     }
   };
 
 
 ///fetch reviews////////
 export const getReviewsLocal = () => async (dispatch) => {
-  let reviewsRef = firestore.collection("Reviews");
+  let reviewsRef = firestore.collection("reviews");
   let query;
-  query = reviewsRef.orderBy("createdAt", "asc");
+  query = reviewsRef.orderBy("createdAt", "desc");
   try {
+    
     let querySnap = await query.get();
     let reviews = [];
     for (let i = 0; i < querySnap.docs.length; i++) {
@@ -34,11 +41,39 @@ export const getReviewsLocal = () => async (dispatch) => {
       };
       reviews.push(rev);
     }
+
     dispatch({
       type: "FETCH_REVIEWS",
       reviews,
     });
   } catch (error) {
-    console.log("errorrr", error);
-  }
+
+    toastr.error("אופס", "קרתה תקלה בטעינה אנא נסה לרענן");
 };
+}
+
+//DELETE_REVIEW_ACTION
+
+export const deleteReview = (id) => {
+  console.log('333333bbb')
+  return async (dispatch) => {
+    console.log('333333aft1')
+  console.log('33333aftertr787y',id)
+    try {
+      console.log('3333aftertry',id)
+      dispatch(asyncActionStart());
+      await firestore
+        .collection("reviews")
+        .doc(id)
+        .delete()
+        toastr.success("מצוין", "הפרויקט נמחק בהצלחה");
+      dispatch(asyncActionFinish());
+    } catch (error) {
+      dispatch(asyncActionError());
+      toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
+      throw new SubmissionError({
+        _error: error.message
+      });
+  }  
+}
+}

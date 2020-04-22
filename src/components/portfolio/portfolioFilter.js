@@ -8,7 +8,7 @@ import { categories } from "../../utilities/constAccessories";
 
 const PortfolioFilter = ({catFilter}) => (
 
-<Select small dir="rtl" 
+<Select porfolio  dir="rtl" 
         onChange={(e)=>{
           return catFilter(e.target.value)
           }}>

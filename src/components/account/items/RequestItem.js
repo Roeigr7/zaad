@@ -20,7 +20,7 @@ const title =(read)=>{
 <TitleAccordion onClick={()=>toggleReq(index)} open={open}>{companyname} <Span small thin >{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</Span></TitleAccordion>
 <AccordionContent open={open} >
  <P small right><Span>שם איש קשר: </Span> {contactname} </P>
- <P  small right><Span>טלפון: </Span>{phone}</P>
+ <P small right><Span>טלפון: </Span>{phone}</P>
  <P small right>{email}<Span> :אימייל</Span></P>
  <P  small right><Span>מטרת הפרויקט: </Span>{projecttarget}</P>
  <P small right><Span>בקשות נוספות: </Span>{additional}</P>

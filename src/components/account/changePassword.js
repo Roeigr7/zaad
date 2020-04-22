@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React from "react";
 import { reduxForm, Field } from "redux-form";
 import TextInput from "../../Form/TextInput";
 import { combineValidators, isRequired,matchesField,composeValidators } from "revalidate";

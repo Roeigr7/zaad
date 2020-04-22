@@ -7,11 +7,13 @@ import {
   asyncActionError,
 } from "./asyncActions";
 import { toastr } from "react-redux-toastr";
+import { SubmissionError } from "redux-form";
 
 /////////////////ADD_PROJECT_ACTION////////////
 export const addNewProject = (project = {}) => {
-  return async () => {
+  return async (dispatch) => {
     try {
+      dispatch(asyncActionStart());
       await firestore
         .collection("projects")
         .doc()
@@ -26,9 +28,10 @@ export const addNewProject = (project = {}) => {
           userOwn: project.userId ? project.userId : "",
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
+        dispatch(asyncActionFinish());
       toastr.success("!מעולה", "נוצר פרויקט חדש");
     } catch (error) {
-      toastr.error("!אופס", "פרויקט לא התווסף");
+      toastr.error("אופס", "קרתה תקלה במערכת, אנא נסה שנית");
     }
   };
 };
@@ -36,32 +39,38 @@ export const addNewProject = (project = {}) => {
 //DELETE_PROJECT_ACTION
 
 export const deleteProject = (id) => {
-  console.log("sssssssssssssssssssssss", id);
   return async (dispatch) => {
     try {
+ 
+      dispatch(asyncActionStart());
       await firestore
         .collection("projects")
         .doc(id)
         .delete()
         .then(function () {
-          toastr.success("Success!", "Project have been deleted");
+          toastr.success("מצוין", "הפרויקט נמחק בהצלחה");
         });
-      console.log("idiid", id);
+ 
       dispatch({
         type: "DELETE_PROJECTS",
         id,
       });
+      dispatch(asyncActionFinish());
     } catch (error) {
-      console.log("lotob", error);
+         dispatch(asyncActionError());
+      toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
     }
   };
 };
 
 //------------------------------------------------------//
 //UPDATE_PROJECT_ACTION
-export const updateProject = async (project) => {
+
+
+export const updateProject = (project) => {
+  return async (dispatch) => {
   try {
-    
+    dispatch(asyncActionStart());
     await firestore
       .collection("projects")
       .doc(project.id)
@@ -75,11 +84,14 @@ export const updateProject = async (project) => {
         date: project.date ? project.date : "null",
         userOwn: project.userId ? project.userId : "",
       });
+      dispatch(asyncActionFinish());
+      toastr.success("מצוין", "הפרויקט עודכן בהצלחה");
   } catch (error) {
-    console.log("1111NOTGOOD----UpdateProject", error);
+    dispatch(asyncActionError());
+    toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
   }
 };
-
+}
 //////GET project filter AND FETCH///////////
 export const getProjectsFilter = (lastProject, category) => async (
   dispatch
@@ -88,6 +100,7 @@ export const getProjectsFilter = (lastProject, category) => async (
   let query;
   try {
     dispatch(asyncActionStart());
+
     let startAfter =
       lastProject &&
       (await firestore.collection("projects").doc(lastProject.id).get());
@@ -109,25 +122,26 @@ export const getProjectsFilter = (lastProject, category) => async (
           .limit(8))
       : (query = projectRef.orderBy("date", "desc").limit(8));
     let querySnap = await query.get();
+   
     if (querySnap.docs.length === 0) {
       dispatch(asyncActionFinish());
       return querySnap;
     }
+  
     let projects = [];
     for (let i = 0; i < querySnap.docs.length; i++) {
       let proj = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
       projects.push(proj);
     }
-
+    dispatch(asyncActionFinish());
     dispatch({
       type: "FETCH_PROJECTS",
       projects,
     });
-    dispatch(asyncActionFinish());
     return querySnap;
   } catch (error) {
     dispatch(asyncActionError());
-    console.log(error);
+    toastr.error("אופס", "קרתה תקלה בטעינת העמוד אנא נסה לרענן");
   }
 };
 
@@ -144,14 +158,15 @@ export const getHomePageProjects = () => async (dispatch) => {
       let proj = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id };
       projects.push(proj);
     }
+    dispatch(asyncActionFinish());
     dispatch({
       type: "FETCH_PROJECTS",
       projects,
     });
-    dispatch(asyncActionFinish());
+
   } catch (error) {
     dispatch(asyncActionError());
-    console.log(error);
+    toastr.error("אופס", "קרתה תקלה בטעינה אנא נסה לרענן");
   }
 };
 
@@ -159,7 +174,6 @@ export const getHomePageProjects = () => async (dispatch) => {
 export const getUserProjects = (currentUid) => async (dispatch) => {
   let projectRef = firestore.collection("projects");
   let query;
-
   try {
     dispatch(asyncActionStart());
     query = projectRef
@@ -175,36 +189,37 @@ export const getUserProjects = (currentUid) => async (dispatch) => {
       };
       projects.push(proj);
     }
-
+    dispatch(asyncActionFinish());
     dispatch({
       type: "USER_PROJECTS",
       projects,
     });
-    dispatch(asyncActionFinish());
+
   } catch (error) {
     dispatch(asyncActionError());
-    console.log(error);
+    toastr.error("אופס", "קרתה תקלה בטעינה אנא נסה לרענן");
   }
 };
 
 //////////GET SINGLE PROJECT IF HARD REFRESH//////////////////
-export const getSingleProject = (projectId) => async (dispatch) => {
+export const getSingleProject = (projectId)=>{
+  return async (dispatch) => {
+  console.log('sssssssssss88888')
   let projectRef = firestore.collection("projects").doc(projectId);
-  console.log("77777777eforetry current uid", projectId);
   try {
-    console.log("77777777tryyyyy");
+    console.log('sssssssssss88888after')
     dispatch(asyncActionStart());
     let querySnap = await projectRef.get();
     let singleProject = { ...querySnap.data(), id: querySnap.id, key: 0 };
-    console.log("777777singleprojec", singleProject);
-    console.log("777777singleprojecquersnapt", querySnap);
+    dispatch(asyncActionFinish());
     dispatch({
       type: "SINGLE_PROJECT",
       singleProject,
     });
-    dispatch(asyncActionFinish());
+
   } catch (error) {
     dispatch(asyncActionError());
-    console.log("77777777778", error);
+    toastr.error("אופס", "הסרטון שהינך מחפש לא נמצא")
   }
 };
+}

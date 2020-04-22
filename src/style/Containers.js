@@ -14,7 +14,6 @@ box-sizing:border-box;
   color: white;
   font-family: "Heebo", sans-serif;
   margin: 5px auto 0 auto;
-
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -23,6 +22,7 @@ box-sizing:border-box;
 export const ContainerMid = styled(ContainerUp)`
 box-sizing:border-box;
   width: 100%;
+
   justify-content: left;
   padding: 0;
 `;

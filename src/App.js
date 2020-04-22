@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 height:100%;
 		margin: 0;
     color: black;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 
 	}
 `;

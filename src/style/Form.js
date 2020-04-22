@@ -20,7 +20,7 @@ background: linear-gradient(-120deg, rgba(59,113,137,1) 50%, rgba(59,113,137,0.9
 position:relative;
 margin:${p=>p.modal? '100px auto':'10px auto'};
 display:flex;
-padding:1px;
+padding:2px;
 border:none;
 width:${p=>p.small? '30%' : p.big? '70%' :'50%'};
 justify-content:center;
@@ -187,7 +187,6 @@ background:transparent;
 
 export const Select = styled.select`
 box-sizing:border-box;
-
 background-color:#c7cad1;
 padding:8px 10px;
 font-size:16px;
@@ -196,13 +195,10 @@ margin-bottom:${p => p.small ? '0px': p.big? '30px' : '10px'};
 border: none;
 border-bottom: 2px solid #dfc887;
 outline:none;
+width:90%;
 background:transparent;
 text-align:right;
 border-radius:4px;
-@media (max-width: 768px) {
-   width:90%;
- }
-
 
 &:focus ~  ${Label} {
     top:-15px;

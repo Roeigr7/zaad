@@ -6,7 +6,6 @@ import SelectInput from "../../Form/SelectInput";
 import TextAreaInput from "../../Form/TextArea";
 import DateInput from "../../Form/DateInput";
 import { connect } from "react-redux";
-import { withFirestore } from "react-redux-firebase";
 import { Form,FlexFields , FormTitle, SelectWrapper } from "../../style/Form";
 import {Button, FormButtons} from "../../style/style";
 import {getAllUsers} from '../../Redux/actions/userActions';

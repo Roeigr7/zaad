@@ -47,7 +47,7 @@ export const LinkFooter = styled(Link)`
     display: block;
     width: 0;
     right: 0;
-    border-bottom: 1px solid #dfc887;
+    border-bottom: 1px solid #35667e;
     position: absolute;
     height: 2px;
     transition: 0.5s ease;
@@ -58,7 +58,7 @@ export const LinkFooter = styled(Link)`
   }
   &:hover {
     color: ${(p) =>
-      p.ig ? "#D72978" : p.fb ? "#4064AD" : p.vim ? "#00B4D1" : "#dfc887"};
+      p.ig ? "#D72978" : p.fb ? "#4064AD" : p.vim ? "#00B4D1" : "#35667e"};
   }
 `;
 

@@ -28,7 +28,7 @@ flex-wrap:wrap;
  flex: 1 1 50%;
  border:2px solid brown;
  @media (max-width: 768px) {
-
+min-height:${p=>p.map? '200px':'50px'};
 flex: 1 0 100%;
 }
 `

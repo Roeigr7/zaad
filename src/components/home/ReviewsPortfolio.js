@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 
-import { getReviewsLocal, addReview } from "../../Redux/actions/reviewActions";
+import { getReviewsLocal, addReview,  deleteReview } from "../../Redux/actions/reviewActions";
 import ReviewItem from "./ReviewItem";
-import {  ReviewContainer, ButtonRev,  Button } from "../../style/style";
+import {  ReviewContainer, ButtonRev,  Button, IconAct } from "../../style/style";
 import { connect } from "react-redux";
 import ReviewForm from "../../Form/ReviewForm";
 
 
 class ReviewsContainer extends Component {
   constructor(props) {
-   
     super(props);
     this.state = {
       write: false,
-      key: 2,
       list: this.props.reviews,
       rev: "",
     };
   }
   async componentDidMount() {
-    console.log("11112222------didmount ReviewsContainer");
     await this.props.getReviewsLocal();
     this.setState({
       list: this.props.reviews,
@@ -53,27 +50,39 @@ write: !this.state.write
 })
   }
   render() {
+    const {admin,addReview}=this.props
+   const {write,rev}=this.state
     return (
       <>
 
             <ReviewContainer>
-            {this.state.write ? (
+            {write ? (
         <ReviewForm cancel={this.writeFunc} addReview={addReview}/>
                 ) : (
                   <>
-              <ReviewItem rev={this.state.rev} />
+             
+              <ReviewItem rev={rev} />
+              {admin&& (
+ <>  
+   {/* //////////Delete button///////   */}
+          <IconAct bottom delete
+        onClick={() => {
+         this.props.deleteReview(rev.id)
+
+        }}
+      > <i className='fa fa-trash'></i></IconAct>
+        </>
+      )}
               <ButtonRev onClick={() => this.nextRev()}>
               <i className='fas fa-backward'></i> הבא
               </ButtonRev>
-                  <Button onClick={this.writeFunc}>הוסף ביקורת</Button>
+                  <Button  onClick={this.writeFunc}>הוסף ביקורת</Button>
                   <ButtonRev right onClick={() => this.prevRev()}>
             הקודם <i className='fas fa-forward'></i> 
               </ButtonRev>
               </>
             )}
             </ReviewContainer>
-            {/* <Button onClick={this.writeFunc}>כתוב תגובה חדשה</Button> */}
-
     
       </>
     );
@@ -82,9 +91,11 @@ write: !this.state.write
 
 const actions = {
   getReviewsLocal,
-  addReview
+  addReview,
+  deleteReview
 };
 const mapStateToProps = (state) => ({
   reviews: state.reviews,
+  admin: state.auth.user&&state.auth.user.admin
 });
 export default connect(mapStateToProps, actions)(ReviewsContainer);

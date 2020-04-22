@@ -3,28 +3,25 @@ import ProjectsList from "../components/projects/projectsList";
 import PortfolioFilter from "../components/portfolio/portfolioFilter";
 import { connect } from "react-redux";
 import { getProjectsFilter} from "../Redux/actions/projectsActions";
-
-import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, Form } from "../style/style";
+import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, BoxContent} from "../style/style";
 import Spinner from "../components/Spinner";
 
 class PortfolioPage extends Component {
 state={
   moreProjects:false,
-  loadingInitial:true,
+
   loadedProjects:[],
   category:null
 }
   async componentDidMount(){
-
     let next=await this.props.getProjectsFilter();
-
-
     if(next&&next.docs&&next.docs.length>1){
       this.setState({
         moreProjects:true,
-        loadingInitial:false
+    
       })
     }
+
   }
 
   getNextProjects=async()=>{
@@ -41,8 +38,9 @@ state={
     }
   }
   componentDidUpdate=async(prevProps,prevState)=>{
-
+  
     if(this.state.category!==prevState.category){
+   
     let next=await this.props.getProjectsFilter(null,this.state.category);
 
     if(next&&next.docs&&next.docs.length<=7){
@@ -52,11 +50,13 @@ state={
     }
   }
   else if (this.props.projects!==prevProps.projects){
+  
       this.setState({
 
         loadedProjects:[...this.state.loadedProjects, ...this.props.projects]
       })
     }
+
   }
   catFilter=(cat)=>{
     this.setState({
@@ -68,12 +68,11 @@ state={
 }
 
   render() {
-
-    if (this.state.loadingInitial) return <Spinner/>
+    if (this.props.loading) return <Spinner />;  
     return (
       <PageLayout>
-  <Form>
-      <FormTitle>תיק עבודות</FormTitle></Form>
+  <BoxContent>
+      <FormTitle>תיק עבודות</FormTitle></BoxContent>
 <ContainerUp>
 
  <PortfolioFilter catFilter={this.catFilter} />

@@ -18,9 +18,11 @@ export const Link = ({ isActive, children, ...props }) => {
 export const LinkIcon = styled(Link)`
   max-width: 80px;
   border-radius: 50%;
-
   background-color:none;
 
+&:focus{
+  outline:none;
+}
 
 `;
 export const SliderWrapper = styled.div`
@@ -32,10 +34,13 @@ export const IconHome = styled.div`
   width:70px;
   border-radius: 50%;
   height:70px;
-
  transition: all 0.6s ease;
   background-image:${p=>p.isActive? `url(${LhomeAfter})`:`url(${Lhome})`};
   background-size:contain;
+
+  &:hover{
+    opacity:0.6;
+  }
   
 `;
 export const IconSend = styled(IconHome)`

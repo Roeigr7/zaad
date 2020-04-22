@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import FormProject from "../components/projectPage/FormProject";
 import { isEmpty } from "react-redux-firebase";
 
-import { updateProject } from "../Redux/actions/projectsActions";
+import { updateProject,  getSingleProject } from "../Redux/actions/projectsActions";
 import { PageLayout } from "../style/style";
+import Spinner from "../components/Spinner";
 
 class EditProjectPage extends Component {
   async componentDidMount() {
@@ -18,14 +19,12 @@ class EditProjectPage extends Component {
       console.log('444444442222 tare ',project)
     }
   }
-submitEdit = (values) =>{
-  console.log('4444444444wqq', values)
-    updateProject(values)         
+submitEdit = async(values) =>{
+    await this.props.updateProject(values)         
   this.props.history.push("/portfolio")
-console.log("1111111111editproject", values);
   }
   render() {
-
+  if (this.props.loading) return <Spinner/>
     return (
 <PageLayout>
             <FormProject initialValues={this.props.project}
@@ -34,20 +33,13 @@ console.log("1111111111editproject", values);
               
             />
 
-          {/* <button
-          onClick={() => {
-            props.dispatch(startDeleteProject({ id: props.project.id }));
-            props.history.push("/portfolio");
-          }}
-        >
-          remove
-        </button> */}
 </PageLayout>
     );
   }
 }
 const actions={
-  updateProject
+  updateProject,
+  getSingleProject
 }
 
 const mapStateToProps = (state,ownProps) => {
@@ -60,7 +52,8 @@ const mapStateToProps = (state,ownProps) => {
   }
   return{
     project,
-    initialValues:project
+    initialValues:project,
+    loading: state.async.loading
   }
 }
 

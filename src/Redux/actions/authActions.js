@@ -1,5 +1,5 @@
 import { firebase, firestore } from "../../firebase/firebase";
-import { SubmissionError,reset } from "redux-form";
+import { SubmissionError } from "redux-form";
 import { closeModal } from "./modalsActions";
 import {toastr} from 'react-redux-toastr'
 import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { Link } from "./Header";
-
 //////////////Icon///////////////////
-export const Icon = styled.button`
+export const IconAct = styled.button`
   border-radius:50%;
   position: absolute;
-  top: 20;
+  top:${p => p.bottom ? '' : '0'};
+  bottom:${p => p.bottom&&'0'};
   left:${p => p.edit ? '0' : '32px'};
   z-index: 0;
   color:white;
@@ -22,7 +22,6 @@ export const Icon = styled.button`
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-
 	font-size:13px;
 	font-weight:bold;
 	text-decoration:none;
@@ -36,18 +35,23 @@ background-color:${p=>p.edit ? '#4a98cc' : '#e74d3c'}
 }
 
 @media (max-width: 768px) {
-    display:none
-  }
-
+  background-color:${p=>p.edit ? '#4a98cc' : '#e74d3c'};
+  width: 20px;
+  height:20px;
+  font-size:8px;
+  left:${p => p.edit ? '0' : '23px'};
+}
 `;
 
-//////////////Content///////////////////
+//////////////Content title///////////////////
 export const Content = styled.div`
 position: relative;
-font-size:30px;
+font-size:25px;
 overflow: hidden;
  margin: auto;
- color:#2e4156;
+ color:#efefef;
+ border:transparent;
+ outline:none;
   z-index: 0;
   text-align: center;
   opacity: 0;
@@ -83,15 +87,18 @@ width:100%;
 height:0;
 top:0;
 opacity:0;
+
+text-decoration:none;
 margin:0;
 padding:0;
 position:absolute;
-background-color:white;
+background-color:#35667E;
 z-index:2;
 transition: 0.5s ease;
 @media (max-width: 768px) {
   height:100%;
   }
+
 `;
 
 
@@ -113,13 +120,16 @@ export const HoverWrapper = styled.div`
     z-index: 2;
     opacity: 1;
   }
-  &:hover ${Icon} {
+  &:hover ${IconAct} {
 z-index:3;
 
   }
 
   @media (max-width: 768px) {
     width: 100%;
+    ${IconAct} {
+      z-index:3;
+    }
   }
 `;
 

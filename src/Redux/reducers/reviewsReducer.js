@@ -10,6 +10,7 @@ const reviewsReducer = (state = reviewsReducerDefaultState, action) => {
       case "ADD_REVIEW":
           console.log('actionREVIEWS',action.reviews)
           return [...state.reviews , action.newRev]
+
     default:
       return state;
   }

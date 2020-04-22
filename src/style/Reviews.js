@@ -22,6 +22,7 @@ width:95%;
 export const ReviewContent=styled.div`
 box-sizing:border-box;
 flex:1 1 100%;
+padding: 2px;
 color:#c7cad1;
 background:none;
 word-break: break-word;

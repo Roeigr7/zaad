@@ -15,17 +15,14 @@ const validate=combineValidators({
   content:
   composeValidators(
   isRequired({message: "חובה לרשום תוכן"}),
-  hasLengthLessThan(480)({message: 'מקסימום 480 תווים'})
+  hasLengthLessThan(400)({message: 'מקסימום 400 תווים'})
   )()
 })
 
-const ReviewForm = ({ cancel,history,handleSubmit, reset, addReview }) => {
+const ReviewForm = ({ cancel,handleSubmit, reset, addReview }) => {
   const handleCommentSubmit =async values => {
-
     await addReview(values);
     reset();
-    history.go()
-  
   };
   return (
     <form onSubmit={handleSubmit(handleCommentSubmit)}>

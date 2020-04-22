@@ -1,20 +1,28 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 /////////////HOME PAGE GOLD TITLES//////////////////
+
 export const H4 = styled.h4`
+border:${p=>p.border? 'solid rgb(252, 231, 179, 0.5)': 'none'}; 
+border-width: 0px 0 0.5px 0;
 font-weight:bold;
 width:100%;
-
+margin:0 auto;
 background-color:#183042;
 margin:0;
+box-sizing: border-box;
+text-decoration:none;
 padding:0;
   position: relative;
 color:#e8d08f;
 @media(max-width: 768px){
-width:95%;
+width:100%;
 }
 `
+
+export const H4Link = H4.withComponent(Link);
 
 export const H2 = styled.h2`
 text-align:center;

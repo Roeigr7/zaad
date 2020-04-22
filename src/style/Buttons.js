@@ -15,7 +15,7 @@ background-size: 100% 200%;
   background-position: top;
   transition: background-position 0.3s ease-in-out;
 display:inline-block;
-margin:${p=>p.showmore? '0 auto':'5px'};
+margin:${p=>p.showmore? '5px auto':'5px'};
 border:1px solid #efefef;
 border-bottom:0.5px solid ${p=>p.success? '#01C34F': p.cancel? 'red': '#b3b6bc'};/*gold*/
 color:#eff1f4;
