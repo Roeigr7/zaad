@@ -20,7 +20,7 @@ background: linear-gradient(-120deg, rgba(59,113,137,1) 50%, rgba(59,113,137,0.9
 position:relative;
 margin:${p=>p.modal? '100px auto':'10px auto'};
 display:flex;
-padding:2px;
+padding:1px;
 border:none;
 width:${p=>p.small? '30%' : p.big? '70%' :'50%'};
 justify-content:center;
@@ -190,7 +190,7 @@ box-sizing:border-box;
 background-color:#c7cad1;
 padding:8px 10px;
 font-size:16px;
-color:#c7cad1;
+color:white;
 margin-bottom:${p => p.small ? '0px': p.big? '30px' : '10px'};
 border: none;
 border-bottom: 2px solid #dfc887;
@@ -222,7 +222,6 @@ export const Option = styled.option`
 color:${p => p.disabled? '#c7cad1' :'#E6E9F2'};
 background:${p => p.disabled? '#b8bbc1' :'#33627A'};
 max-width: 70%;
-
 `
 
 export const FlexFields = styled.div`
@@ -234,7 +233,6 @@ justify-content:space-between;
 flex-wrap: wrap;
 @media(max-width: 768px){
 justify-content:center;
-
 }
 `
 

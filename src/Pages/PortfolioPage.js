@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ProjectsList from "../components/projects/projectsList";
-import PortfolioFilter from "../components/portfolio/portfolioFilter";
+import ProjectsList from "../components/portfolio/ProjectsList";
+import PortfolioFilter from "../components/portfolio/PortfolioFilter";
 import { connect } from "react-redux";
 import { getProjectsFilter} from "../Redux/actions/projectsActions";
 import { Button,PageLayout, ContainerUp, ContainerMid, FormTitle, BoxContent} from "../style/style";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/features/Spinner";
 
 class PortfolioPage extends Component {
 state={

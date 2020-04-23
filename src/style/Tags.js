@@ -36,6 +36,7 @@ background-color:none;
 
 ///////P ALL THE SITE///////////
 export const P=styled.p`
+direction:rtl;
 margin-top:${p=>p.marg? '-5px' : ''};
 font-weight: ${p=>p.bold? 'bold' : 'normal'};
 line-height: ${p=>p.bigspace? '2' : p.smallspace? '0.5':'normal'};
@@ -43,15 +44,12 @@ word-wrap: break-word;
 font-size:${p=>p.small? '14px':p.tiny? '12px':'16px'};
 text-align:${p=>p.left? 'left' : p.right? 'right' :'center'};
 color:${p=>p.white? '#EFEFEF': '#0f1f2f'};
-@media(max-width: 700px){
-  font-size:12px;
-}
 `
 export const Span = styled.span`
 line-height: 0.2;
 font-weight:${p=>p.thin? 'normal':'bold'};
 word-wrap: break-word;
-font-size:${p=>p.small? '12px' : '14px'};
+font-size:${p=>p.small? '12px': p=>p.big?'16px' : '14px'};
 text-align:${p=>p.left? 'left' : 'right'};
 color:#0f1f2f;
 `

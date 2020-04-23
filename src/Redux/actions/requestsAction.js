@@ -58,7 +58,7 @@ export const addNewRequest = (projectRequest = {}) => {
   
   };
 
-  //DELETE_PROJECT_ACTION
+  //DELETE_REQUEST_ACTION
 
 export const deleteRequest = id => {
 
@@ -70,17 +70,16 @@ export const deleteRequest = id => {
         .doc(id)
         .delete()
         .then(function() {
-          toastr.success("Success!", "Request have been deleted");
+          toastr.success("מצוין", "הודעת הלקוח נמחקה בהצלחה");
         });
  dispatch(asyncActionFinish());
-        console.log('idiid',id)
 dispatch({
   type:'DELETE_REQUEST',
   id
 })
     } catch (error) {
       dispatch(asyncActionError());
-      console.log("lotob", error);
+
     }
   };
 };

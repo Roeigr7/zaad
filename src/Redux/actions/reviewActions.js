@@ -7,7 +7,6 @@ import { SubmissionError } from "redux-form";
 /////add review comment new user to dataBase//////
 export const addReview = (comment) => async (dispatch) => {
     try {
-      console.log('3333333333333333333333')
       dispatch(asyncActionStart())
        await firestore.collection("reviews").doc().set({
         name: comment.name,
@@ -55,12 +54,9 @@ export const getReviewsLocal = () => async (dispatch) => {
 //DELETE_REVIEW_ACTION
 
 export const deleteReview = (id) => {
-  console.log('333333bbb')
+console.log('dddddddddddd2112112',id)
   return async (dispatch) => {
-    console.log('333333aft1')
-  console.log('33333aftertr787y',id)
     try {
-      console.log('3333aftertry',id)
       dispatch(asyncActionStart());
       await firestore
         .collection("reviews")
@@ -71,9 +67,7 @@ export const deleteReview = (id) => {
     } catch (error) {
       dispatch(asyncActionError());
       toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
-      throw new SubmissionError({
-        _error: error.message
-      });
+      alert("The engine can't understand this code, it's invalid");
   }  
 }
 }

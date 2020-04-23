@@ -39,8 +39,11 @@ return(
  {/* //////////Delete button///////   */}
         <IconAct style={{top:'5px',left:'35px'}} delete
       onClick={async() => {
-       await deleteProject(project.id)
-      history.push('/home');  
+ if (window.confirm('Are you sure you wish to delete this item?')){
+  await deleteProject(project.id)
+  history.push('/home'); 
+ }     
+       
       }}
     >
 <i className='fa fa-trash'></i></IconAct>

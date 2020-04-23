@@ -1,8 +1,8 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import TextInput from "../Form/TextInput";
+import TextInput from "../forms/fields/TextInput";
 import { combineValidators, isRequired } from "revalidate";
-import TextAreaInput from "../Form/TextArea";
+import TextAreaInput from "../forms/fields/TextArea";
 import { connect } from "react-redux";
 import { withFirestore } from "react-redux-firebase";
 import {

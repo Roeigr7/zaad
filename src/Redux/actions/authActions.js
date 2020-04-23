@@ -62,7 +62,6 @@ export const logout = () => {
 }
 /////////////////REGISTER ACTION///////////////////
 export const startRegister = user => {
-
   return async (dispatch) => {
     try {
       dispatch(asyncActionStart());
@@ -82,6 +81,7 @@ export const startRegister = user => {
         })
         .then(() =>{
           dispatch(asyncActionFinish());
+      
         });
     } catch (error) {
       dispatch(asyncActionError());

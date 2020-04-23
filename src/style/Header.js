@@ -9,32 +9,12 @@ margin-left:${p=>p.right && 'auto'};
 margin-left:0;
 flex: 0 0 100%;
 border-bottom:0.5px solid #366a82;
-&:nth-of-type(1) {
-    order: 1;
-  }
-  &:nth-of-type(3) {/*about */
-    order: 2;
-    flex: 0 0 50%;
-  }
 
-  &:nth-of-type(2) {/*portfolio*/
-    order: 3;
-    flex: 0 0 50%;
-  }
-  &:nth-of-type(4) {/* addproject */
-    order: 4;
-  }
-  &:nth-of-type(5) {/* admin */
-    order: 8;
-  }
-  &:nth-of-type(6) {/* register/logout */
-    order: 7;
-  }
-  &:nth-of-type(7) {/* sendrequest */
-    order: 6;
-  }
-  &:nth-of-type(8) {/* HOME */
-    order: 5;
+&:nth-child(9) { order: 9; }
+
+
+
+  
   }
 
 }`
@@ -92,6 +72,22 @@ margin:0;
 @media(max-width: 768px){
     flex-direction: row;
     flex-wrap: wrap;
+    li:nth-child(1) {background-color:red;}
+
+li:nth-child(2) {background-color:blue;}
+
+li:nth-child(3) {background-color:yellow;}
+
+li:nth-child(4) {background-color:pink;}
+
+li:nth-child(5) {background-color:orange;}
+
+li:nth-child(6) {background-color:black;}
+
+li:nth-child(7) {background-color:green;}
+li:nth-child(8) {background-color:grey;}
+
+li:nth-child(9) {background-color:white;}
 }`
 
 export const Link = ({send,logo,isActive, children, ...props}) => {

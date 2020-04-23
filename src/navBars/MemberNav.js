@@ -8,7 +8,7 @@ const {pathname} = useLocation();
 return(
 <>
 <Li><StyledLink to="/account" isActive={pathname === '/account'}>
-אזור אישי
+{profile.fullName}
 </StyledLink></Li>
              
 <Li><StyledLink onClick={logout} to="/" isActive={pathname === '/'}>

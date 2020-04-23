@@ -11,6 +11,8 @@ import Labout from "../utilities/Iconbar/Labout.svg";
 import LaboutAfter from "../utilities/Iconbar/LaboutAfter.svg";
 import Lportfolio from "../utilities/Iconbar/Lportfolio.svg";
 import LportfolioAfter from "../utilities/Iconbar/LportfolioAfter.svg";
+import Lcustomers from "../utilities/Iconbar/Lcustomers.svg";
+import LcustomersAfter from "../utilities/Iconbar/LcustomersAfter.svg";
 export const Link = ({ isActive, children, ...props }) => {
   return <RRDOM {...props}>{children}</RRDOM>;
 };
@@ -54,4 +56,8 @@ background-image:${p=>p.isActive? `url(${LaboutAfter})`:`url(${Labout})`};
 `
 export const IconPortfolio = styled(IconHome)`
 background-image:${p=>p.isActive? `url(${LportfolioAfter})`:`url(${Lportfolio})`};
+`
+
+export const IconCustomers = styled(IconHome)`
+background-image:${p=>p.isActive? `url(${LcustomersAfter})`:`url(${Lcustomers})`};
 `

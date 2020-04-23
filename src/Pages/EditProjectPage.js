@@ -1,34 +1,33 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import FormProject from "../components/projectPage/FormProject";
+import FormProject from "../forms/FormProject";
 import { isEmpty } from "react-redux-firebase";
 
 import { updateProject,  getSingleProject } from "../Redux/actions/projectsActions";
 import { PageLayout } from "../style/style";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/features/Spinner";
 
 class EditProjectPage extends Component {
   async componentDidMount() {
     let{match,project}=this.props;
     if(isEmpty(project)) {
-      console.log('444444444ifwwwEMPYTY',match.params.id)
       await this.props.getSingleProject(match.params.id);
   }
-    else{
-      console.log('444444442222 tare ',project)
-    }
   }
 submitEdit = async(values) =>{
     await this.props.updateProject(values)         
   this.props.history.push("/portfolio")
   }
   render() {
+  const {project}=this.props
   if (this.props.loading) return <Spinner/>
+
     return (
 <PageLayout>
-            <FormProject initialValues={this.props.project}
-              project={this.props.project}
+            <FormProject formTitle={'עריכת פרויקט'}
+             initialValues={project}
+              project={project}
               onSubmit={this.submitEdit}
               
             />

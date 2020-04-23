@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import transfer from '../utilities/transfer.png';
+import specialDelete from '../utilities/specialDelete.svg';
 
 /////////////////BUTTTON////////////////////////////////////////////////
 export const Button = styled.button`
@@ -88,8 +89,9 @@ flex-direction:row;
 export const ButtonSpecial=styled.div`
 position:relative;
 font-size:14px;
+float:left;
 margin:5px;
-text-align:left;
+margin-left:${p=>p.right ? '40px':'10px'};
 cursor:pointer;
 color:#E0AE50;
 
@@ -101,7 +103,7 @@ margin-left:3px;
     transform:translateY(-50%);
     width:20px;
     height:20px;
-    background-image:url(${transfer});
+    background-image:${p=>p.delete ? `url(${specialDelete})`:`url(${transfer})`};
     background-position:center;
     background-size:contain;
     background-repeat:no-repeat;

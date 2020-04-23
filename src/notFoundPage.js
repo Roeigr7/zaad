@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import notFoundImg from './utilities/notFoundImg.jpg';
+import { StyledLink } from './style/style';
+
+
 
 const pageNotFound = () => {
     return(
 <Fragment>
 <center>
 <img src={notFoundImg} alt="notFound" width="50%"/><br/>
-<Link to="/">Return to Home Page</Link
-></center>
+<StyledLink to="/">חזור לעמוד הראשי</StyledLink>
+</center>
 </Fragment>
 )
     }

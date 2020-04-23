@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Reviews from "../components/home/ReviewsPortfolio";
-import ProjectsList from "../components/projects/projectsList";
+import Reviews from "../components/reviews/ReviewsContainer";
+import ProjectsList from "../components/portfolio/ProjectsList";
 import { connect } from "react-redux";
 import { addReview, getReviewsLocal } from "../Redux/actions/reviewActions";
 import { getHomePageProjects } from "../Redux/actions/projectsActions";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/features/Spinner";
 import {
   PageLayout,
   ContainerUp,

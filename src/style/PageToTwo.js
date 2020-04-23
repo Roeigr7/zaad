@@ -15,7 +15,7 @@ flex-wrap:wrap;
   export const ContainerRight= styled.div`
   flex: 1 1 50%;
   box-sizing: border-box; 
-  border:2px solid grey;
+
   @media (max-width: 768px) {
     flex: 1 0 100%;
  
@@ -26,7 +26,7 @@ flex-wrap:wrap;
 
  box-sizing: border-box; 
  flex: 1 1 50%;
- border:2px solid brown;
+
  @media (max-width: 768px) {
 min-height:${p=>p.map? '200px':'50px'};
 flex: 1 0 100%;

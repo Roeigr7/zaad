@@ -19,7 +19,7 @@ import {
 } from "../style/style";
 import { logout } from "../Redux/actions/authActions";
 
-const MainNavBar = ({ logout, profile, openModal, auth }) => {
+const MainNavBar = ({ admin,logout, profile, openModal, auth }) => {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [height, setHeight] = useState(46);
@@ -62,7 +62,7 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
           )}
 
           {/* Add project button if authenticated */}
-          {auth && (
+          {admin && (
             <Li><StyledLink yellow
                 to='/addproject'
                 isActive={pathname === "/addproject"}
@@ -77,7 +77,12 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
               צור קשר
             </StyledLink>
           </Li>
-
+          <Li >
+            {" "}
+            <StyledLink to='/customers' isActive={pathname === "/customers"}>
+              לקוחות
+            </StyledLink>
+          </Li>
           <Li>
             {" "}
             <StyledLink to='/about' isActive={pathname === "/about"}>
@@ -119,6 +124,7 @@ const MainNavBar = ({ logout, profile, openModal, auth }) => {
 const MapStateToProps = (state) => ({
   profile: state.auth.user,
   auth: state.auth.authenticated,
+  admin: state.firebase.profile.admin
 });
 const actions = (dispatch) => ({
   openModal: (modalType, modalProps) => {

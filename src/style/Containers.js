@@ -22,13 +22,12 @@ box-sizing:border-box;
 export const ContainerMid = styled(ContainerUp)`
 box-sizing:border-box;
   width: 100%;
-
   justify-content: left;
   padding: 0;
 `;
 //////3-Container BOTTOM///////////
 export const ContainerBot = styled(ContainerMid)`
-border:2px solid orange;
+
 box-sizing:border-box;
   padding: 0;
   margin: 0;
@@ -43,7 +42,7 @@ display:block;
 
 ////////SQUARE////////////
 export const Square = styled.div`
-  flex: 1 1 25%;
+  flex: 0 0 25%;
   justify-content: flex-start;
   flex-grow: unset;
   flex-wrap: wrap;
@@ -51,16 +50,36 @@ export const Square = styled.div`
   box-sizing: border-box; 
   font-family: "Heebo", sans-serif;
   @media (max-width: 768px) {
-    flex: 1 1 50%;
+    flex:0 0 50%;
   }
 `;
 //////////Container ABOUT//////////
-export const ContainerAbout = styled.div`
-border:2px solid blue;
+export const AboutContainer = styled.div`
 margin:0 auto;
-width:50%;
-
+width:70%;
   @media (max-width: 768px) {
     width: 95%;
   }
+`;
+
+
+
+////////BIG LOGOS CONTACT CONTAINER/////////////////
+export const SocialContainer=styled.div`
+display:flex;
+position:relative;
+justify-content:center;
+align-items:center;
+`
+
+///////MODALCONTAINER/////////////
+export const ModalContainer = styled.div`
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.7);
 `;

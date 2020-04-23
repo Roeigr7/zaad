@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import {  addNewProject } from "../Redux/actions/projectsActions";
-import FormProject from "../components/projectPage/FormProject";
+import FormProject from "../forms/FormProject";
 import { PageLayout } from "../style/style";
 
 
@@ -9,7 +9,7 @@ const AddProjectPage = props => (
 
   <PageLayout>
 
-        <FormProject
+        <FormProject formTitle={'הוסף פרויקט חדש'}
         cancel={()=>props.history.push("/home")}
           onSubmit={project => {
             props.dispatch(addNewProject(project));

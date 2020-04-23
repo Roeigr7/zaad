@@ -5,6 +5,7 @@ import HomePage from "./Pages/HomePage";
 import PortfolioPage from "./Pages/PortfolioPage";
 import PageNotFound from "./notFoundPage";
 import ContactPage from "./Pages/ContactPage";
+import CustomersPage from "./Pages/CustomersPage";
 import ProjectPage from "./Pages/ProjectPage";
 import ScrollToTop from 'react-router-scroll-top'
 import AboutPage from "./Pages/AboutPage";
@@ -13,8 +14,9 @@ import SendRequestPage from "./Pages/SendRequestPage";
 import AddProjectPage from "./Pages/addProjectPage";
 import EditProjectPage from "./Pages/EditProjectPage";
 import { createBrowserHistory } from "history";
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./RoutesAuth/PrivateRoute";
+import AdminRoute from "./RoutesAuth/AdminRoute";
+import PublicRoute from "./RoutesAuth/PublicRoute";
 import ModalManager from "./modals/ModalManager";
 import { createGlobalStyle } from "styled-components";
 import MainNavBar from "./navBars/MainNavBar";
@@ -58,12 +60,12 @@ const App=()=>{
             <Route exact path='/portfolio' component={PortfolioPage} />
             <Route path='/portfolio/:id' component={ProjectPage} />
             <Route path='/sendrequest' component={SendRequestPage} />
-
-            <PrivateRoute path='/addproject' component={AddProjectPage} />
+            <Route path='/customers' component={CustomersPage} />
+            <AdminRoute path='/addproject' component={AddProjectPage} />
             <PublicRoute path='/register' component={HomePage} />
             <PublicRoute path='/login' component={HomePage} />
-            <Route path='/edit/:id' component={EditProjectPage} />{/*private*/}
-            <Route path='/account' component={AccountPage} />{/*private*/}
+            <PrivateRoute path='/edit/:id' component={EditProjectPage} />
+            <PrivateRoute path='/account' component={AccountPage} />
             <Route component={PageNotFound} />
           </Switch>
           <IconsBar/>

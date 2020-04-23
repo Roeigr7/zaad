@@ -1,41 +1,17 @@
 import React from "react";
-
-import { Switch, Route, Redirect } from "react-router-dom";
-import AccountNav from "../components/account/accountNav";
-import AccountDetails from "../components/account/accountDetails";
-// import AccountProjects from "../components/account/containers/ProjectsContainer";
-import ChangePassword from "../components/account/changePassword";
-import ProfileForm from "../Form/ProfileForm";
+import {PageLayout, ContainerUp,} from "../style/style";
+import { Switch,  Redirect } from "react-router-dom";
+import AccountNav from "../components/account/AccountNav";
+import AccountDetailsPage from "../components/account/AccountDetailsPage";
+import ChangePasswordPage from "../components/account/ChangePasswordPage";
+import RequestsPage from "../components/account/requests/RequestsPage";
+import ProjectsUserPage from "../components/account/ProjectsUserPage";
+import ProfileForm from "../forms/ProfileForm";
 import { connect } from "react-redux";
 import { updatePassword } from "../Redux/actions/authActions";
-import {
-  PageLayout,
-  ContainerLeft,
-  ContainerRight,
-  ContainerTogether,
-} from "../style/style";
-import RequestsContainer from "../components/account/containers/requestsContainer";
-import styled from "styled-components";
-import ProjectsContainer from "../components/account/containers/ProjectsContainer";
 import { updateProfile } from "../Redux/actions/userActions";
-
-//////container details//////
-export const CDetails = styled.div`
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid yellow;
-
-  margin: 30px 55px 0px 25px;
-  text-align: right;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin: 0;
-  }
-`;
-
-
+import { PrivateRoute } from "../RoutesAuth/PrivateRoute";
+import { AdminRoute } from "../RoutesAuth/AdminRoute";
 
 const AccountPage = ({history , user, updatePassword, updateProfile, requests }) => {
 
@@ -44,32 +20,31 @@ const AccountPage = ({history , user, updatePassword, updateProfile, requests })
   }
   return (
     <PageLayout>
-      <ContainerTogether>
-        <ContainerRight>
+<ContainerUp>
           <AccountNav history={history} />
-        </ContainerRight>
+          </ContainerUp>
 {/* ///////////////////LEFT---->PAGES/////////////////////////////////// */}
-        <ContainerLeft>
+
           <Switch>
             <Redirect exact from='/account' to='/account/details' />
-            <Route
-              exact
-              path='/account/details'
-              render={() => <AccountDetails user={user} />}
+          
+            <PrivateRoute
+               exact path='/account/details'
+              render={() => <AccountDetailsPage user={user} />}
             />
-            <Route
+            <PrivateRoute
               path='/account/projects'
-              render={() => <ProjectsContainer user={user} />}
+              render={() => <ProjectsUserPage/>}
             />
-            <Route
+            <AdminRoute
               path='/account/requests'
-              render={() => <RequestsContainer />}
+              render={() => <RequestsPage />}
             />
-            <Route
+            <PrivateRoute
               path='/account/changepassword'
-              render={() => <ChangePassword updatePassword={updatePassword} />}
+              render={() => <ChangePasswordPage updatePassword={updatePassword} />}
             />
-            <Route
+            <PrivateRoute
               path='/account/details/edit'
               render={() => (
          
@@ -80,8 +55,8 @@ const AccountPage = ({history , user, updatePassword, updateProfile, requests })
               )}
             />
           </Switch>
-        </ContainerLeft>
-      </ContainerTogether>
+
+  
     </PageLayout>
   );
 };
@@ -94,6 +69,6 @@ const actions = {
 
 const mapStateToProps = (state) => ({
   projects: state.projects,
-  user: state.auth.user,
+user:state.firebase.profile
 });
 export default connect(mapStateToProps, actions)(AccountPage);
