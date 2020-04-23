@@ -15,8 +15,8 @@ export const categories = [
 
 ///////////TITLE HOME PAGE TEXT/////////////////
 export const titleText=(
-<P marg bold>
-    חברתינו מתמחה בכל תחומי הוידאו והסאונד
+<P white>
+אנחנו מתמחים בכל תחומי הוידאו והסאונד
       <br/>
   בתיק העבודות שלנו תוכלו למצוא מגוון רחב של
    <br/>
