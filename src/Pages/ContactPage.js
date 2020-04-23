@@ -15,11 +15,11 @@ import GoogleMap from '../components/contact/GoogleMap';
           <ContainerTogether>
              
 <ContainerRight>
-<P bold >רוצים להתקדם? <Span big thin>למעבר למסלול המהיר </Span><SpanLink Link to='/sendrequest'>לחצו כאן</SpanLink></P>
+<P white bold >רוצים להתקדם? <Span white big thin>למעבר למסלול המהיר </Span><SpanLink Link to='/sendrequest'>לחצו כאן</SpanLink></P>
 
-<P bold >כתובתינו: <Span big thin>טרומפלדור 6, באר שבע</Span></P>
-        <P bold marg >טלפון: <Span big thin>054-315-1888</Span></P>
-        <P bold marg >מייל: <Span big thin>zaad.studios@gmail.com</Span></P>
+<P white bold >כתובתינו: <Span white big thin>טרומפלדור 6, באר שבע</Span></P>
+        <P white bold marg >טלפון: <Span white big thin>054-315-1888</Span></P>
+        <P white bold marg >מייל: <Span white big thin>zaad.studios@gmail.com</Span></P>
   
 <SocialContainer>
 <BigLogo contact fb href="https://www.facebook.com/zaadstudios/"><i style={{color:'#3B5998' , fontSize:'300%', position:'relative'}} className="fab fa-facebook-square"></i></BigLogo>

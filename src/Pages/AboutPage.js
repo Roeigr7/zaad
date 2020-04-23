@@ -12,7 +12,7 @@ const aboutPage = () => {
 
 </AboutContainer>
 <H4Link to='/customers'>מיטב לקוחותינו</H4Link>
-<CustomersSlider rows={1}/>
+<CustomersSlider dots={false} rows={1}/>
            </PageLayout>
     )
 }

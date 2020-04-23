@@ -263,5 +263,20 @@ right:13px;
 top:9px;
 cursor:pointer;
 `
+export const RegBoxContainer=styled.div`
+background: linear-gradient(-120deg, rgba(59,113,137,1) 50%, rgba(59,113,137,0.98) 50%);
+position:relative;
+margin:10px auto;
+border:1px solid #EFEFEF;
+border-radius:4px 4px 0 0;
+display:flex;
+padding:1px;
+
+width:${p=>p.small? '30%' : p.big? '70%' :'50%'};
+justify-content:center;
+flex-direction:column;
+@media(max-width: 768px){
+width:90%;
+}`
 
 export const BoxContent=Form.withComponent('div')

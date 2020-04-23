@@ -18,30 +18,13 @@ import PrivateRoute from "./RoutesAuth/PrivateRoute";
 import AdminRoute from "./RoutesAuth/AdminRoute";
 import PublicRoute from "./RoutesAuth/PublicRoute";
 import ModalManager from "./modals/ModalManager";
-import { createGlobalStyle } from "styled-components";
 import MainNavBar from "./navBars/MainNavBar";
 import BottomNavBar from "./navBars/BottomNavBar";
 import StartPage from "./StartPage";
 import IconsBar from "./navBars/IconsBar";
-
+import { GlobalStyle, SiteContainer } from "./style/style";
 
 export const history = createBrowserHistory();
-
-const GlobalStyle = createGlobalStyle`
-	body{
-    background: linear-gradient(180deg, rgba(59, 113, 137,1) 0%, rgba(24, 48, 66,1) 85%);
-    font-family: 'Heebo', sans-serif;
-    background-repeat: no-repeat;
-    background-size:cover;
- text-align: center;
-
-height:100%;
-		margin: 0;
-    color: black;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-
-	}
-`;
 
 const App=()=>{
     return (
@@ -51,6 +34,7 @@ const App=()=>{
 
         <Router history={history}>
         <ScrollToTop>
+          <SiteContainer>
           <MainNavBar />
           <Switch>
           <Route exact path='/' component={StartPage} />
@@ -68,6 +52,7 @@ const App=()=>{
             <PrivateRoute path='/account' component={AccountPage} />
             <Route component={PageNotFound} />
           </Switch>
+          </SiteContainer>
           <IconsBar/>
           <BottomNavBar />
           </ScrollToTop>

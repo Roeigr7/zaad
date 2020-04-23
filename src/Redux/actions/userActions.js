@@ -30,13 +30,13 @@ let currentUser=firebase.auth().currentUser;
 console.log(currentUser,'888888')   
 currentUser.updateEmail(user.email).then(() => {
 console.log('88888222',user.email)
-}).catch((error) =>{
-  console.log('1111112222222222222',error)
+}).catch(() =>{
+  toastr.error("אופס" , "קרתה בעיה בעדכון הפרטים");
 });
           dispatch(asyncActionFinish());
            toastr.success("מעולה", "הפרטים עודכנו");
-   }).catch ((error) =>{
-console.log('22222221',error)
+   }).catch (() =>{
+    toastr.error("אופס","הקשת סיסמא לא נכונה");
     })
   }
 }

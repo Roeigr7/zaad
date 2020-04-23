@@ -8,7 +8,7 @@ const CustomersPage = () => {
   <BoxContent style={{marginBottom:'15px'}} big>
       <FormTitle >מיטב לקוחותינו</FormTitle>  </BoxContent>  
 
-<CustomersSlider rows={2}/>
+<CustomersSlider dots={true} rows={2}/>
            </PageLayout>
     )
 }

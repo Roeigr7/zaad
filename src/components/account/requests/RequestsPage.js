@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BoxContent, Button,FormButtons} from "../../../style/style";
+import { RegBoxContainer, Button,FormButtons} from "../../../style/style";
 import RequestItem from "./RequestItem";
 import { connect } from "react-redux";
 import { getRequestLocal,transferToArchive } from "../../../Redux/actions/requestsAction";
@@ -43,7 +43,7 @@ const { active,requestsList} = this.state;
 const{requests}=this.props;
     
 return (
-           <BoxContent>
+        <RegBoxContainer>
            <FormButtons>
         <Button active={!active}  onClick={() => this.setState({  active:!active, requestsList: requests.filter((req) => req.read) })}>
     ארכיון
@@ -58,7 +58,7 @@ return (
                 );
               })}
 
-        </BoxContent>
+  </RegBoxContainer>
     );
   }
 }

@@ -2,7 +2,6 @@ import { firebase, firestore } from "../../firebase/firebase";
 
 import { toastr } from "react-redux-toastr";
 import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";
-import { SubmissionError } from "redux-form";
 
 /////add review comment new user to dataBase//////
 export const addReview = (comment) => async (dispatch) => {
@@ -54,7 +53,6 @@ export const getReviewsLocal = () => async (dispatch) => {
 //DELETE_REVIEW_ACTION
 
 export const deleteReview = (id) => {
-console.log('dddddddddddd2112112',id)
   return async (dispatch) => {
     try {
       dispatch(asyncActionStart());

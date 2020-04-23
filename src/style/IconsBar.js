@@ -29,6 +29,7 @@ export const LinkIcon = styled(Link)`
 `;
 export const SliderWrapper = styled.div`
   width: 100%;
+position:relative;
 `;
 
 export const IconHome = styled.div`

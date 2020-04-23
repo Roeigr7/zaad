@@ -11,9 +11,12 @@ export const Link = ({ isActive, ig, fb, vim, children, ...props }) => {
 export const Footer = styled.footer`
 
   display: flex;
+  position:relative;
+
   flex-direction: row;
   flex-wrap:wrap;
   height: 45px;
+
   justify-content: center;
   width: 100%;
   box-sizing:border-box;

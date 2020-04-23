@@ -15,7 +15,6 @@ export const getRequestLocal = ()=>
     dispatch(asyncActionStart());
     let querySnap = await requestRef.get();
     let requests = [];
-    console.log('aaaaa2222221',querySnap.docs.length);
     for (let i = 0; i < querySnap.docs.length; i++) {
       let req = { ...querySnap.docs[i].data(), id: querySnap.docs[i].id,open:false };
       requests.push(req);
@@ -28,13 +27,13 @@ export const getRequestLocal = ()=>
     dispatch(asyncActionFinish());
   } catch (error) {
     dispatch(asyncActionError());
-    console.log('error',error);
   }
 };
 
 export const addNewRequest = (projectRequest = {}) => {
     return async (dispatch) => {
       dispatch(asyncActionStart());
+      try{
       await firestore
         .collection("requests")
         .doc()
@@ -48,12 +47,11 @@ export const addNewRequest = (projectRequest = {}) => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           read: false,
         })
-        .then(()=>{
           dispatch(asyncActionFinish());
-          toastr.success("Success!", "New Project Added");
-          console.log("Dcessfully written!",  projectRequest);
-        });
-
+          toastr.success("מצוין", "בקשתך נשלחה בהצלחה");
+        }catch(error){
+          toastr.error("אופס", "קרתה תקלה בשליחת הבקשה אנא נסה שנית");
+        }
       };
   
   };

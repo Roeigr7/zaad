@@ -5,12 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { SliderWrapper } from "../../style/IconsBar";
 import { customersList } from "../../utilities/customers/customersList";
 
-const CustomersSlider = ({rows}) => {
+const CustomersSlider = ({rows,dots}) => {
   console.log(rows)
   let settings = {
     speed: 500,
     slidesToShow: 6,
-    dots: true,
+    dots: dots,
     arrows: false,
     rows: rows,
     swipeToSlide: true,

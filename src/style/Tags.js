@@ -51,5 +51,5 @@ font-weight:${p=>p.thin? 'normal':'bold'};
 word-wrap: break-word;
 font-size:${p=>p.small? '12px': p=>p.big?'16px' : '14px'};
 text-align:${p=>p.left? 'left' : 'right'};
-color:#0f1f2f;
+color:${p=>p.white? '#EFEFEF': '#0f1f2f'};
 `

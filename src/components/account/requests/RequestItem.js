@@ -22,7 +22,7 @@ const title =(read)=>{
 <AccordionContent open={open} >
  <P small right><Span>שם איש קשר: </Span> {contactname} </P>
  <P small right><Span>טלפון: </Span>{phone}</P>
- <P small right>{email}<Span> :אימייל</Span></P>
+ <P small right><Span>אימייל: </Span> {email}</P>
  <P  small right><Span>מטרת הפרויקט: </Span>{projecttarget}</P>
  <P small right><Span>בקשות נוספות: </Span>{additional}</P>
  <P small right date><Span>נשלח בתאריך: </Span>{createdAt&& format (createdAt.toDate(), 'dd/MM/yyyy')}</P> 
@@ -40,7 +40,6 @@ const title =(read)=>{
 מחק לתמיד  
        </ButtonSpecial>
          </>
-
  </AccordionContent>
  </ContainerAccordion>
 
