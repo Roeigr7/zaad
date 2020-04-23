@@ -62,4 +62,13 @@ export const LinkFooter = styled(Link)`
   }
 `;
 
+export const UlB = styled.ul`
+list-style-type:none;
+display:flex;
+padding:0;
+margin:0;
+@media(max-width: 768px){
+    flex-direction: row;
+}`
+
 export const LinkFooterIcon = LinkFooter.withComponent('a');

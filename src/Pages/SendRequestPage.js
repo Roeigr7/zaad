@@ -18,6 +18,7 @@ import { addNewRequest } from "../Redux/actions/requestsAction";
 const SendRequestPage = ({ history,handleSubmit, reset, addNewRequest }) => {
   const handleRequestSubmit = (values) => {
     addNewRequest(values);
+    history.goBack();
 
   };
   return (

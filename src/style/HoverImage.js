@@ -5,8 +5,8 @@ export const IconAct = styled.button`
   border-radius:50%;
   position: absolute;
   top:${p => p.bottom ? '' : '0'};
-  bottom:${p => p.bottom&&'0'};
-  left:${p => p.edit ? '0' : '32px'};
+  bottom:${p => p.bottom&&'1px'};
+  left:${p => p.edit ? '0':  '32px'};
   z-index: 0;
   color:white;
   background-color:red;

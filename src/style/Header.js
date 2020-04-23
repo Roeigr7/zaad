@@ -10,15 +10,8 @@ margin-left:0;
 flex: 0 0 100%;
 border-bottom:0.5px solid #366a82;
 
-&:nth-child(9) { order: 9; }
-
-
-
-  
-  }
 
 }`
-
 /////Logo navbar////////
 export const Logo =styled.img`
 position: relative;
