@@ -62,12 +62,12 @@ console.log('dddddddddddd2112112',id)
         .collection("reviews")
         .doc(id)
         .delete()
-        toastr.success("מצוין", "הפרויקט נמחק בהצלחה");
+        toastr.success("מצוין", "התגובה נמחקה בהצלחה");
       dispatch(asyncActionFinish());
     } catch (error) {
       dispatch(asyncActionError());
       toastr.error("אופס", "קרתה תקלה אנא נסה שנית");
-      alert("The engine can't understand this code, it's invalid");
+      
   }  
 }
 }

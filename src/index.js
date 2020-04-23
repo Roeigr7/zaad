@@ -55,7 +55,6 @@ const renderApp = () => {
 
 
 firebase.auth().onAuthStateChanged((user) => {
-  console.log('wwwww26',user)
   if (user) {
     store.dispatch(login(user.uid));
       renderApp();
@@ -64,7 +63,6 @@ firebase.auth().onAuthStateChanged((user) => {
     // }
   }
    else {
-    console.log('wwwww27',user)
     store.dispatch(logout());
     renderApp();
     // history.push('/');

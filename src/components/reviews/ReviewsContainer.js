@@ -67,7 +67,7 @@ write: !this.state.write
           <IconAct bottom delete
         onClick={() => {
 
-          if (window.confirm('Are you sure you wish to delete this item?')){
+          if (window.confirm('אתה בטוח שתרצה למחוק את הביקורת?')){
           if(rev===undefined){
              toastr.error("אופס","לא נמצאה ביקורת למחיקה");
             }else deleteReview(rev.id)

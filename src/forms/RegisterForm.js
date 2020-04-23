@@ -93,10 +93,9 @@ const mapStateToProps=(state)=>({
   loading: state.async.loading
  })
 
-const actions = dispatch => ({
-  startRegister: user => dispatch(startRegister(user)),
-
-});
+const actions = {
+  startRegister
+};
 export default connect(
   mapStateToProps,
   actions

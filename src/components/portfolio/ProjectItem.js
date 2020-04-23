@@ -31,7 +31,7 @@ const ProjectItem = ({ admin, deleteProject, id, title, videoUrl }) => {
               delete
               onClick={async () => {
                 if (
-                  window.confirm("Are you sure you wish to delete this item?")
+                  window.confirm("אתה בטוח שתרצה למחוק את הפרויקט?")
                 ) {
                   if (id === undefined) {
                     toastr.error("אופס", "לא נמצא פרויקט למחיקה");

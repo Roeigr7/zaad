@@ -72,22 +72,27 @@ margin:0;
 @media(max-width: 768px){
     flex-direction: row;
     flex-wrap: wrap;
-    li:nth-child(1) {background-color:red;}
+li:nth-child(10) {order: 2;}/*home*/
+li:nth-child(3) {order: 3;
+  flex: 0 0 50%;
+}/*register logout*/
+ li:nth-child(2) {order: 4;
+flex: 0 0 50%;
+}/*login profile*/
 
-li:nth-child(2) {background-color:blue;}
+ li:nth-child(4) {order: 5;}/*arrange add*/
+ li:nth-child(9) {order: 6;}/*portfolio*/
+ li:nth-child(8) {order: 7;}/*send*/
+ li:nth-child(7) {order: 8;}
+ li:nth-child(6) {order: 9;}
+ li:nth-child(5) {order: 10;}
 
-li:nth-child(3) {background-color:yellow;}
 
-li:nth-child(4) {background-color:pink;}
 
-li:nth-child(5) {background-color:orange;}
 
-li:nth-child(6) {background-color:black;}
 
-li:nth-child(7) {background-color:green;}
-li:nth-child(8) {background-color:grey;}
 
-li:nth-child(9) {background-color:white;}
+
 }`
 
 export const Link = ({send,logo,isActive, children, ...props}) => {

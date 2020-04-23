@@ -4,36 +4,27 @@ import TextInput from "../forms/fields/TextInput";
 import { combineValidators, isRequired } from "revalidate";
 import TextAreaInput from "../forms/fields/TextArea";
 import { connect } from "react-redux";
-import { withFirestore } from "react-redux-firebase";
+
 import {
   Button,
-  Form,CON,
+  Form,
   FormTitle,
   FormButtons,
 } from "../style/style";
 import { PageLayout } from "../style/style";
 import { addNewRequest } from "../Redux/actions/requestsAction";
 
-const validater = combineValidators({
-  contactname: isRequired({ message: "Insert Title !" }),
-  // description:composeValidators(
-  //   isRequired({message: 'Insert Description !'}),
-  //   hasLengthGreaterThan(4)({message: 'description at least 5 characters !'})
-  // )(),
-  //   videoUrl:isRequired({message: 'Insert videoUrl !'}),
-  // category:isRequired({message: 'Choose Category !'}),
-});
+
 const SendRequestPage = ({ history,handleSubmit, reset, addNewRequest }) => {
   const handleRequestSubmit = (values) => {
     addNewRequest(values);
 
   };
-  console.log('kkkkkkkkkkkk',history)
   return (
     <PageLayout>
 
       <Form onSubmit={handleSubmit(handleRequestSubmit)}>
-      <FormTitle>הגש בקשה</FormTitle>
+      <FormTitle>המסלול המהיר</FormTitle>
         <Field
           name='contactname'
           component={TextInput}
@@ -92,9 +83,8 @@ const actions = {
   addNewRequest,
 };
 
-export default withFirestore(
+export default 
   connect(
     null,
     actions
-  )(reduxForm({ form: "RequestForm", validater })(SendRequestPage))
-);
+  )(reduxForm({ form: "RequestForm" })(SendRequestPage));

@@ -45,6 +45,7 @@ background-color:${p=>p.edit ? '#4a98cc' : '#e74d3c'}
 
 //////////////Content title///////////////////
 export const Content = styled.div`
+direction:rtl;
 position: relative;
 font-size:25px;
 overflow: hidden;

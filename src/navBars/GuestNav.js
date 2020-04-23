@@ -18,6 +18,8 @@ const GuestNav = ({ signIn, register }) => {
       >
         הרשמה
       </StyledLink></Li>
+      <Li style={{display:'none'}}><StyledLink>arrange</StyledLink> </Li>      {/* /temporarly solution for arrange children*/}
+
     </>
   );
 };

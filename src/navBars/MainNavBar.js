@@ -108,7 +108,7 @@ const MainNavBar = ({ admin,logout, profile, openModal, auth }) => {
           </Li>
           <Li>
             
-            <StyledLink className='s' to='/home' isActive={pathname === "/home"}>
+            <StyledLink to='/home' isActive={pathname === "/home"}>
               ראשי
             </StyledLink>
           </Li>
