@@ -23,7 +23,7 @@ return async (dispatch) => {
  }) 
   }catch(error){
     dispatch(asyncActionError());
-console.log('wwwwwwwwwlogin errrrrr',error)
+
   }
 }}
 
@@ -52,7 +52,6 @@ export const startEmailPasswordLogin = creds => {
 };
 //////////logout/////////
 export const logout = () => {
-  console.log("start logout!!!!!!!!!!!!!!!!");
   return async(dispatch) => {
    firebase.auth().signOut();
   dispatch({
@@ -109,12 +108,12 @@ export const updatePassword=(creds)=>{
     }
 
 return  reauthenticate(creds.currentPassword).then(async()=>{
-  console.log(creds.currentPassword,'222222222211curpassword')
+ 
 const user=firebase.auth().currentUser
-console.log(user,'222222222211curuser')
+
 dispatch(asyncActionStart());
 await user.updatePassword(creds.newPass)//לוקח בדיוק את הוואליוז שבפורם
-console.log('222222222211AFTERUPDATE')
+
 dispatch(asyncActionFinish());
 toastr.success('Success','your password been update')
 

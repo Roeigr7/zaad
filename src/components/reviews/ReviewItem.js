@@ -7,11 +7,11 @@ const ReviewItem = ({rev}) => {
 <>
 {rev?(
 <ReviewContent>
- <H4 radius>חוות דעת</H4>
+ <H4>חוות דעת</H4>
  <P white>{rev.content}</P>
  <P white left small>{rev.createdAt&& format (rev.createdAt.toDate(), 'dd/MM/yyyy')} {rev.name} </P>
  </ReviewContent>
-):(<H4 radius>חוות דעת</H4>)
+):(<H4>חוות דעת</H4>)
 }
 </>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LinkFooterIcon,LinkFooter,Footer, LiB, Ul, UlB } from '../style/style';
+import { LinkFooterIcon,LinkFooter,Footer, LiB,  UlB } from '../style/style';
 
 const BottomNavBar = () => {
   return (

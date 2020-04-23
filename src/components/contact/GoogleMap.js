@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
  
-const AnyReactComponent = () => <i  style={{color:'red',fontSize:'20px'}} class="fas fa-map-marker-alt"></i>;
+const AnyReactComponent = () => <i  style={{color:'red',fontSize:'20px'}} className="fas fa-map-marker-alt"></i>;
  
 class GoogleMap extends Component {
   static defaultProps = {

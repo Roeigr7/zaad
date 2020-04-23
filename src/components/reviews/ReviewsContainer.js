@@ -7,6 +7,7 @@ import { getReviewsLocal, addReview,  deleteReview } from "../../Redux/actions/r
 import { toastr } from "react-redux-toastr";
 
 class ReviewsContainer extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,12 +17,19 @@ class ReviewsContainer extends Component {
     };
   }
   async componentDidMount() {
+
     await this.props.getReviewsLocal();
     this.setState({
       list: this.props.reviews,
       rev: this.props.reviews[0],
     });
   }
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
 
 
   nextRev = () => {

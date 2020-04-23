@@ -15,7 +15,7 @@ import GoogleMap from '../components/contact/GoogleMap';
           <ContainerTogether>
              
 <ContainerRight>
-<P white bold >רוצים להתקדם? <Span white big thin>למעבר למסלול המהיר </Span><SpanLink Link to='/sendrequest'>לחצו כאן</SpanLink></P>
+<P white bold >רוצים להתקדם? <Span white big thin>למעבר למסלול המהיר </Span><SpanLink to='/sendrequest'>לחצו כאן</SpanLink></P>
 
 <P white bold >כתובתינו: <Span white big thin>טרומפלדור 6, באר שבע</Span></P>
         <P white bold marg >טלפון: <Span white big thin>054-315-1888</Span></P>

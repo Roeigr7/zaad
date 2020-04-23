@@ -1,5 +1,5 @@
 import React from "react";
-import {ButtonSpecial,TitleAccordion ,AccordionContent, P, Span, ContainerAccordion, IconAct} from "../../../style/style";
+import {ButtonSpecial,TitleAccordion ,AccordionContent, P, Span, ContainerAccordion} from "../../../style/style";
 import { useHistory } from "react-router";
 import { format } from "date-fns";
 import { connect } from "react-redux";

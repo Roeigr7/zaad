@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
-console.log('COMPONENT ->modalManager')
-console.log('modal manager')
+
 const modalLookup={
    LoginModal,
    RegisterModal

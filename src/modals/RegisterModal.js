@@ -1,5 +1,5 @@
 import React from "react";
-import {  Button,ModalContainer } from "../style/style";
+import {  ModalContainer } from "../style/style";
 import { connect } from "react-redux";
 import { closeModal } from "../Redux/actions/modalsActions";
 

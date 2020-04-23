@@ -1,5 +1,5 @@
 import { firebase, firestore } from "../../firebase/firebase";
-import { SubmissionError } from "redux-form";
+
 import { toastr } from "react-redux-toastr";
 import { asyncActionStart, asyncActionFinish, asyncActionError } from "./asyncActions";
 
@@ -27,15 +27,16 @@ reauthenticate(user.password).then (async()=>{
           email:user.email,
         })
 let currentUser=firebase.auth().currentUser;
-console.log(currentUser,'888888')   
 currentUser.updateEmail(user.email).then(() => {
-console.log('88888222',user.email)
+
 }).catch(() =>{
+  dispatch(asyncActionError());
   toastr.error("אופס" , "קרתה בעיה בעדכון הפרטים");
 });
           dispatch(asyncActionFinish());
            toastr.success("מעולה", "הפרטים עודכנו");
    }).catch (() =>{
+    dispatch(asyncActionError());
     toastr.error("אופס","הקשת סיסמא לא נכונה");
     })
   }
@@ -45,6 +46,7 @@ export const getAllUsers = () => async (dispatch) => {
   let usersRef = firestore.collection("users");
   let query = usersRef.orderBy("fullName", "desc");
   try {
+    dispatch(asyncActionStart());
     let querySnap = await query.get();
     let usersList = [];
     for (let i = 0; i < querySnap.docs.length; i++) {
@@ -52,12 +54,12 @@ export const getAllUsers = () => async (dispatch) => {
 
  usersList.push(user);
     }
-
+    dispatch(asyncActionFinish());
     dispatch({
       type: "GET_ALL_USERS",
       usersList,
     });
   } catch (error) {
-    console.log("users list error", error);
+    dispatch(asyncActionError());
   }
 };

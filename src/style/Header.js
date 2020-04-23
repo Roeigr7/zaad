@@ -88,7 +88,7 @@ flex: 0 0 50%;
 
 }`
 
-export const Link = ({send,logo,isActive, children, ...props}) => {
+export const Link = ({border,yellow,send,logo,isActive, children, ...props}) => {
     return (
         <ReactRouterDomLink {...props}>
             {children}

@@ -37,7 +37,7 @@ const RegisterForm = ({
       <Form onSubmit={handleSubmit(registerSubmit)}>
       {loading? (<Spinner/>):(
           <>
-      <ModalIcon onClick={() =>(closeModal())}><i class="fas fa-times"></i></ModalIcon>
+      <ModalIcon onClick={() =>(closeModal())}><i className="fas fa-times"></i></ModalIcon>
   <FormTitle>הרשמה</FormTitle>
       <Field
           name='fullName'

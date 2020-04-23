@@ -40,7 +40,7 @@ const jsx = (
   </ReactReduxFirebaseProvider>
 </Provider>
 );
-console.log('sssssssssssssssss23')
+
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
