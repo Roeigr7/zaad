@@ -58,6 +58,12 @@ state={
     }
 
   }
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
   catFilter=(cat)=>{
     this.setState({
       moreProjects:true,
@@ -68,6 +74,7 @@ state={
 }
 
   render() {
+    const {category}=this.state
     if (this.props.loading) return <Spinner />;  
     return (
       <PageLayout>
@@ -75,7 +82,7 @@ state={
       <FormTitle>תיק עבודות</FormTitle></BoxContent>
 <ContainerUp>
 
- <PortfolioFilter catFilter={this.catFilter} />
+ <PortfolioFilter category={category} catFilter={this.catFilter} />
     </ContainerUp>
 <ContainerMid>
 <ProjectsList 
