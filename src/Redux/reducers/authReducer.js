@@ -1,5 +1,7 @@
 const initialState = {
-user:null,
+user:{
+  admin:false
+},
 authenticated:false
 }
 

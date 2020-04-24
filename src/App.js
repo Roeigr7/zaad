@@ -45,11 +45,11 @@ const App=()=>{
             <Route path='/portfolio/:id' component={ProjectPage} />
             <Route path='/sendrequest' component={SendRequestPage} />
             <Route path='/customers' component={CustomersPage} />
-            <AdminRoute path='/addproject' component={AddProjectPage} />
-            <PublicRoute path='/register' component={HomePage} />
-            <PublicRoute path='/login' component={HomePage} />
-            <PrivateRoute path='/edit/:id' component={EditProjectPage} />
-            <PrivateRoute path='/account' component={AccountPage} />
+            <Route path='/addproject' component={AddProjectPage} />
+            <Route path='/register' component={HomePage} />
+            <Route path='/login' component={HomePage} />
+            <Route path='/edit/:id' component={EditProjectPage} />
+            <Route path='/account' component={AccountPage} />
             <Route component={PageNotFound} />
           </Switch>
           </SiteContainer>

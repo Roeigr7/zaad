@@ -46,7 +46,7 @@ class FormProject extends Component {
   };
 
   render() {
-const {users,reset,handleSubmit,formTitle}= this.props;
+const {users,reset,handleSubmit,formTitle,cancel}= this.props;
   
     return (
   
@@ -90,7 +90,7 @@ const {users,reset,handleSubmit,formTitle}= this.props;
           <FormButtons>
      
     
-      <Button cancel onClick={this.props.cancel}>בטל</Button>
+      <Button cancel onClick={cancel}>בטל</Button>
       <Button  onClick={reset}>נקה הכל</Button>
       <Button success type='submit'>הוסף פרויקט</Button>
       </FormButtons>

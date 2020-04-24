@@ -24,7 +24,7 @@ const LoginForm = ({loading,closeModal,reset,handleSubmit,startEmailPasswordLogi
             onSubmit={handleSubmit(startEmailPasswordLogin)}> 
         {loading? (<Spinner/>):(
           <>
-  <ModalIcon onClick={() =>(closeModal())}><i class="fas fa-times"></i></ModalIcon>
+  <ModalIcon onClick={() =>(closeModal())}><i className="fas fa-times"></i></ModalIcon>
   <FormTitle>התחבר</FormTitle>
 
         <Field 

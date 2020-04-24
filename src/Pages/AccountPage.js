@@ -1,6 +1,6 @@
 import React from "react";
 import {PageLayout, ContainerUp,} from "../style/style";
-import { Switch,  Redirect } from "react-router-dom";
+import { Switch,  Redirect, Route } from "react-router-dom";
 import AccountNav from "../components/account/AccountNav";
 import AccountDetailsPage from "../components/account/AccountDetailsPage";
 import ChangePasswordPage from "../components/account/ChangePasswordPage";
@@ -10,8 +10,7 @@ import ProfileForm from "../forms/ProfileForm";
 import { connect } from "react-redux";
 import { updatePassword } from "../Redux/actions/authActions";
 import { updateProfile } from "../Redux/actions/userActions";
-import { PrivateRoute } from "../RoutesAuth/PrivateRoute";
-import { AdminRoute } from "../RoutesAuth/AdminRoute";
+
 
 const AccountPage = ({history , user, updatePassword, updateProfile, requests }) => {
 
@@ -28,23 +27,23 @@ const AccountPage = ({history , user, updatePassword, updateProfile, requests })
           <Switch>
             <Redirect exact from='/account' to='/account/details' />
           
-            <PrivateRoute
+            <Route
                exact path='/account/details'
               render={() => <AccountDetailsPage user={user} />}
             />
-            <PrivateRoute
+            <Route
               path='/account/projects'
-              render={() => <ProjectsUserPage/>}
+              render={() => <ProjectsUserPage user={user} />}
             />
-            <AdminRoute
+            <Route
               path='/account/requests'
               render={() => <RequestsPage />}
             />
-            <PrivateRoute
+            <Route
               path='/account/changepassword'
               render={() => <ChangePasswordPage updatePassword={updatePassword} />}
             />
-            <PrivateRoute
+            <Route
               path='/account/details/edit'
               render={() => (
          
@@ -64,7 +63,6 @@ const AccountPage = ({history , user, updatePassword, updateProfile, requests })
 const actions = {
   updatePassword,
    updateProfile,
-  // deleteRequest: id=>dispatch(deleteRequest(id))
 };
 
 const mapStateToProps = (state) => ({

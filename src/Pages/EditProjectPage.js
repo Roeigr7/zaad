@@ -6,7 +6,6 @@ import { isEmpty } from "react-redux-firebase";
 
 import { updateProject,  getSingleProject } from "../Redux/actions/projectsActions";
 import { PageLayout } from "../style/style";
-import Spinner from "../components/features/Spinner";
 
 class EditProjectPage extends Component {
   async componentDidMount() {
@@ -20,12 +19,12 @@ submitEdit = async(values) =>{
   this.props.history.push("/portfolio")
   }
   render() {
-  const {project}=this.props
-  if (this.props.loading) return <Spinner/>
+  const {project,history}=this.props
 
     return (
 <PageLayout>
             <FormProject formTitle={'עריכת פרויקט'}
+             cancel={()=>history.push("/home")}
              initialValues={project}
               project={project}
               onSubmit={this.submitEdit}
@@ -52,7 +51,7 @@ const mapStateToProps = (state,ownProps) => {
   return{
     project,
     initialValues:project,
-    loading: state.async.loading
+
   }
 }
 
